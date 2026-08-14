@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-ar="🌙 العد التنازلي لرمضان" data-en="🌙 Ramadan Countdown">🌙 العد التنازلي لرمضان</title>
+    <link rel="stylesheet" href="ramadan.css">
+    <!-- خطوط عربية أنيقة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;700&family=Lateef:wght@400;700&family=Noto+Naskh+Arabic:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- زر فتح القائمة الجانبية -->
+    <button class="open-sidebar-btn" onclick="toggleSidebar()">☰ <span data-ar="القائمة" data-en="Menu">القائمة</span></button>
+
+    <!-- القائمة الجانبية -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
+        
+        <div class="sidebar-header">
+            <h3 data-ar="قائمة التنقل" data-en="Navigation Menu">قائمة التنقل</h3>
+        </div>
+
+        <ul class="sidebar-links">
+            <li><a href="index.html" data-ar="🏠 الصفحة الرئيسية" data-en="🏠 Home">🏠 الصفحة الرئيسية</a></li>
+            <li><a href="index4.html" data-ar="📿 أذكار الصلاة" data-en="📿 Prayer Azkar">📿 أذكار الصلاة</a></li>
+            <li><a href="index2.html" data-ar="✨ السبحة الإلكترونية" data-en="✨ Digital Tasbeeh">✨ السبحة الإلكترونية</a></li>
+            <li><a href="index3.html" data-ar="🕌 مواقيت الصلاة" data-en="🕌 Prayer Times">🕌 مواقيت الصلاة</a></li>
+            <li><a href="ramadan.html" onclick="toggleSidebar()" data-ar="🌙 رمضان" data-en="🌙 Ramadan">🌙 رمضان</a></li>
+            <li><a href="index5.html" data-ar="قائمة الشيوخ" data-en="List of Sheikhs">قائمةالشيوخ</a></li>
+            <li><a href="settings.html" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات</a></li>
+        </ul>
+    </div>
+
+    <!-- طبقة شفافة خلف القائمة -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- ================= المحتوى الرئيسي ================= -->
+    <div class="ramadan-container">
+        <div class="ramadan-header">
+            <h1 data-ar="🌙 رمضان مبارك" data-en="🌙 Ramadan">🌙 رمضان </h1>
+            <p class="ramadan-subtitle" data-ar="العد التنازلي لشهر رمضان المبارك" data-en="Countdown to the blessed month of Ramadan">العد التنازلي لشهر رمضان المبارك</p>
+        </div>
+
+        <!-- كرت العد التنازلي الكبير -->
+        <div class="countdown-card">
+            <div class="countdown-grid">
+                <div class="countdown-item">
+                    <span id="days" class="countdown-number">00</span>
+                    <span class="countdown-label" data-ar="يوم" data-en="Days">يوم</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span id="hours" class="countdown-number">00</span>
+                    <span class="countdown-label" data-ar="ساعة" data-en="Hours">ساعة</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span id="minutes" class="countdown-number">00</span>
+                    <span class="countdown-label" data-ar="دقيقة" data-en="Minutes">دقيقة</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span id="seconds" class="countdown-number">00</span>
+                    <span class="countdown-label" data-ar="ثانية" data-en="Seconds">ثانية</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== معلومات رمضان (البداية والنهاية وعدد الأيام) ===== -->
+        <div class="ramadan-details">
+            <div class="detail-card">
+                <div class="detail-icon">🌙</div>
+                <div class="detail-label" data-ar="بداية رمضان" data-en="Ramadan Starts">بداية رمضان</div>
+                <div class="detail-day" id="mStartDay">--</div>
+                <div class="detail-date" id="mStartDate">--</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">✨</div>
+                <div class="detail-label" data-ar="نهاية رمضان" data-en="Ramadan Ends">نهاية رمضان</div>
+                <div class="detail-day" id="mEndDay">--</div>
+                <div class="detail-date" id="mEndDate">--</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">📅</div>
+                <div class="detail-label" data-ar="عدد أيام رمضان" data-en="Ramadan Days">عدد أيام رمضان</div>
+                <div class="detail-day" id="mDays">--</div>
+                <div class="detail-date" data-ar="يوم مبارك" data-en="Blessed days">يوم مبارك</div>
+            </div>
+        </div>
+        <p class="ramadan-details-note" data-ar="التواريخ حسب الحسابات الفلكية (تقويم أم القرى) وتُثبَّت نهائياً بعد رؤية هلال رمضان" data-en="Dates per astronomical calculations (Umm al-Qura) and are confirmed by moon sighting">التواريخ حسب الحسابات الفلكية (تقويم أم القرى) وتُثبَّت نهائياً بعد رؤية هلال رمضان</p>
+
+        <!-- معلومات إضافية -->
+        <div class="ramadan-info">
+            <div class="info-card">
+                <h3 data-ar="📖 فضل رمضان" data-en="📖 Virtue of Ramadan">📖 فضل رمضان</h3>
+                <p data-ar="شهر رمضان الذي أنزل فيه القرآن هدى للناس وبينات من الهدى والفرقان" data-en="The month of Ramadan in which the Quran was revealed, a guidance for mankind and clear proofs of guidance and criterion">شهر رمضان الذي أنزل فيه القرآن هدى للناس وبينات من الهدى والفرقان</p>
+            </div>
+            <div class="info-card">
+                <h3 data-ar="🕌 أهمية الشهر" data-en="🕌 Importance of the Month">🕌 أهمية الشهر</h3>
+                <p data-ar="شهر الصيام والقيام وتلاوة القرآن، شهر المغفرة والرحمة والعتق من النار" data-en="Month of fasting, night prayer, and Quran recitation, month of forgiveness, mercy, and salvation from Hellfire">شهر الصيام والقيام وتلاوة القرآن، شهر المغفرة والرحمة والعتق من النار</p>
+            </div>
+        </div>
+
+        <!-- دعاء -->
+        <div class="dua-card">
+            <h3 data-ar="🤲 دعاء رؤية الهلال" data-en="🤲 Crescent Moon Dua">🤲 دعاء رؤية الهلال</h3>
+            <p class="dua-text" data-ar="اللهم أهله علينا بالأمن والإيمان والسلامة والإسلام، ربي وربك الله، هلال خير ورشد" data-en="O Allah, bring it over us with security and faith, safety and Islam. My Lord and your Lord is Allah, a crescent of goodness and guidance">اللهم أهله علينا بالأمن والإيمان والسلامة والإسلام، ربي وربك الله، هلال خير ورشد</p>
+        </div>
+            
+            
+
+
+    </div>
+
+    <script src="lang.js"></script>
+    <script src="quran-api.js"></script>
+    <script src="script3.js"></script>
+    <script src="ramadan.js"></script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+/* ================= إعدادات أساسية ================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Changa', sans-serif;
+}
+
+/* تحديد الألوان الافتراضية (الوضع الفاتح) */
+:root {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #2d3748;
+    --text-muted: #718096;
+    --primary-color: #1b5e3b;
+    --border-color: #e2e8f0;
+}
+
+/* ألوان الوضع الليلي (Dark Mode) */
+body.dark-mode {
+    --bg-color: #12181b;
+    --card-bg: #1e262c;
+    --text-color: #f7fafc;
+    --text-muted: #a0aec0;
+    --primary-color: #2e8b57;
+    --border-color: #2d3748;
+}
+
+/* تطبيق المتغيرات على جسم الصفحة والعناصر */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* تطبيق الخلفيات والألوان على الكروت والقوائم */
+.tasbeeh-container,
+.sidebar {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* زر التبديل بين الوضعين */
+.theme-toggle-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+}
+
+.div{
+    color: #1b5e3b;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: italic;
+}
+.open-sidebar-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #1b5e3b;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* جسم القائمة الجانبية */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px; /* مخفية جهة اليمين خارج الشاشة */
+    width: 260px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* القائمة وهي مفتوحة */
+.sidebar.active {
+    right: 0;
+}
+
+/* زر الإغلاق (X) */
+.close-sidebar-btn {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.sidebar-header h3 {
+    color: var(--primary-color);
+    font-family: 'Amiri', serif;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* قائمة الروابط */
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    margin-bottom: 15px;
+}
+
+.sidebar-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-links a:hover {
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    padding-right: 18px; /* تأثير سحب بسيط للداخل */
+}
+
+/* الطبقة الشفافة خلف القائمة */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 1000;
+}
+
+.overlay.active {
+    display: block;
+}
+.tasbeeh-container {
+    background: #ffffff;
+    max-width: 450px;
+    margin: 2rem auto;
+    padding: 2rem 1.5rem;
+    border-radius: 100px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e6f4ea;
+    text-align: center;
+    transition: 1s;
+}
+.tasbeeh-title {
+    font-family: 'Amiri', serif;
+    color: #478667;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.tasbeeh-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #1b5e3b;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #113f28;
+    background: #f4f7f6;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* شاشة العداد الدائرية */
+.counter-display {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 1.5rem auto;
+    background: linear-gradient(135deg, #113f28, #1b5e3b);
+    border: 6px solid #d4af37; 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.3), 0 6px 15px rgba(27,94,59,0.3);
+}
+
+#counterValue {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* أزرار التحكم */
+.tasbeeh-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.tasbeeh-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #1b5e3b;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(27, 94, 59, 0.3);
+    transition: transform 0.1s, background 0.2s;
+}
+
+.tasbeeh-btn:active {
+    transform: scale(0.96);
+    background: #113f28;
+}
+
+.reset-btn {
+    background: #edf2f7;
+    color: #e53e3e;
+    border: 1px solid #cbd5e0;
+    padding: 0.5rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.reset-btn:hover {
+    background: #fed7d7;
+}
+
+/* ================= تجاوب للشاشات الصغيرة ================= */
+@media (max-width: 480px) {
+    body {
+        padding: 0 8px;
+    }
+
+    .tasbeeh-container {
+        margin: 1rem 0.5rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .tasbeeh-title {
+        font-size: 1.4rem;
+    }
+
+    .counter-display {
+        width: 130px;
+        height: 130px;
+        border-width: 4px;
+    }
+
+    #counterValue {
+        font-size: 2.8rem;
+    }
+
+    .tasbeeh-btn {
+        font-size: 1.2rem;
+        padding: 0.8rem;
+    }
+
+    .open-sidebar-btn {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        top: 10px;
+        right: 10px;
+    }
+
+    .sidebar {
+        width: 220px;
+        right: -240px;
+    }
+
+    .sidebar-links a {
+        font-size: 0.95rem;
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .counter-display {
+        width: 110px;
+        height: 110px;
+    }
+
+    #counterValue {
+        font-size: 2.2rem;
+    }
+
+    .tasbeeh-btn {
+        font-size: 1.1rem;
+        padding: 0.7rem;
+    }
+
+    .tasbeeh-title {
+        font-size: 1.2rem;
+    }
+
+    .sidebar {
+        width: 200px;
+        right: -220px;
+    }
+}

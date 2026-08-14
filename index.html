@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <title>الصفحة الرئيسية</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;700&family=Lateef:wght@400;700&family=Noto+Naskh+Arabic:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="newIntro">
+        <h1>مرحبًا</h1>
+    </div>
+
+    <!-- القائمة الجانبية (يمين) -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
+
+        <div class="sidebar-header">
+            <h3 data-ar="قائمة التنقل" data-en="Navigation Menu">قائمة التنقل</h3>
+        </div>
+
+        <!-- روابط الصفحات والأقسام -->
+        <ul class="sidebar-links">
+            <li><a href="index.html" data-ar="🏠 الصفحة الرئيسية" data-en="🏠 Home">🏠 الصفحة الرئيسية</a></li>
+            <li><a href="index4.html" onclick="toggleSidebar()" data-ar="📿 أذكار الصلاة" data-en="📿 Prayer Azkar">📿
+                    أذكار الصلاة</a></li>
+            <li><a href="index2.html" onclick="toggleSidebar()" data-ar="✨ السبحة الإلكترونية"
+                    data-en="✨ Digital Tasbeeh">✨ السبحة الإلكترونية</a></li>
+            <li><a href="index3.html" data-ar="🕌 مواقيت الصلاة" data-en="🕌 Prayer Times">🕌 مواقيت الصلاة</a></li>
+            <li><a href="ramadan.html" data-ar="🌙 رمضان" data-en="🌙 Ramadan">🌙 رمضان</a></li>
+            <li><a href="index5.html" data-ar="قائمة الشيوخ" data-en="List of Sheikhs">قائمةالشيوخ</a></li>
+            <li><a href="settings.html" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات</a></li>
+
+        </ul>
+    </div>
+
+
+    <!-- الطبقة الشفافة -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- زر فتح القائمة (يمين) -->
+    <button class="open-sidebar-btn" onclick="toggleSidebar()">
+        ☰ <span data-ar="القائمة" data-en="Menu">القائمة</span>
+    </button>
+
+    <!-- الواجهة الرئيسية -->
+    <main class="main-container">
+        <header class="main-header">
+            <div class="top-bar">
+                <i class="fas fa-bell header-icon"></i>
+                <div class="welcome-section">
+                    <p class="bismillah">بسم الله الرحمن الرحيم</p>
+                    <h1 class="quran-title">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</h1>
+                    <div class="home-icon"><i class="fas fa-home"></i></div>
+                    <p class="welcome-msg" data-ar="مرحباً بك في" data-en="Welcome to">مرحباً بك في</p>
+                    <p class="app-name-main" data-ar="تطبيق المسلم" data-en="Muslim App">تطبيق المسلم</p>
+                    <p class="sub-msg" data-ar="رفيقك اليومي للذكر والصلاة والقرآن"
+                        data-en="Your daily companion for dhikr, prayer, and Quran">رفيقك اليومي للذكر والصلاة والقرآن
+                    </p>
+                </div>
+                <div class="lantern-icon"><i class="fas fa-lightbulb"></i></div>
+            </div>
+        </header>
+
+        <section class="card prayer-card">
+            <div class="card-header">
+                <h3><i class="fas fa-mosque"></i> <span data-ar="الصلاة القادمة" data-en="Next Prayer">الصلاة
+                        القادمة</span></h3>
+            </div>
+            <div class="prayer-details">
+                <div class="prayer-time-info">
+                    <h2 id="next-prayer-name">جاري التحميل...</h2>
+                    <p class="time-main" id="next-prayer-time">--:--</p>
+                    <p class="time-remaining-msg" data-ar="باقي على الصلاة" data-en="Time remaining">باقي على الصلاة</p>
+                </div>
+                <div class="mosque-visual">
+                    <img src="download (4).jpg" alt="صورة المسجد" id="custom-image" class="custom-img">
+                </div>
+            </div>
+            <div class="countdown-container">
+                <i class="fas fa-hourglass-half countdown-icon"></i>
+                <div class="countdown">
+                    <div class="time-unit">
+                        <span id="hours">00</span>
+                        <p data-ar="ساعة" data-en="hours">ساعة</p>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-unit">
+                        <span id="minutes">00</span>
+                        <p data-ar="دقيقة" data-en="minutes">دقيقة</p>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-unit">
+                        <span id="seconds">00</span>
+                        <p data-ar="ثانية" data-en="seconds">ثانية</p>
+                    </div>
+                </div>
+            </div>
+            <a href="index3.html" class="view-all-link" data-ar="عرض جميع مواقيت الصلاة"
+                data-en="View all prayer times">عرض جميع مواقيت الصلاة <i class="fas fa-chevron-left"></i></a>
+        </section>
+
+        <section class="card thikr-card">
+            <div class="tasbih-visual-box">
+                <i class="fas fa-beads tasbih-visual"></i>
+            </div>
+            <div class="thikr-content">
+                <div class="thikr-header">
+                    <p class="thikr-type"><i class="fas fa-leaf"></i> <span data-ar="ذكر اليوم"
+                            data-en="Today's Dhikr">ذكر اليوم</span></p>
+                </div>
+                <div class="thikr-text" id="daily-thikr">
+                    <p>جاري تحميل ذكر اليوم...</p>
+                </div>
+                <a href="index4.html" class="more-thikr" data-ar="المزيد من الأذكار" data-en="More Dhikr">المزيد من
+                    الأذكار <i class="fas fa-chevron-left"></i></a>
+            </div>
+        </section>
+
+        <section class="explore-content">
+            <div class="explore-divider">
+                <div class="line"></div>
+                <h3 data-ar="اكتشف المحتوى" data-en="Explore Content">اكتشف المحتوى</h3>
+                <div class="line"></div>
+            </div>
+            <div class="explore-grid">
+                <a href="index3.html" class="explore-item">
+                    <i class="fas fa-mosque"></i>
+                    <h4 data-ar="مواقيت الصلاة" data-en="Prayer Times">مواقيت الصلاة</h4>
+                    <p data-ar="أوقات دقيقة للصلاة" data-en="Accurate prayer times">أوقات دقيقة للصلاة</p>
+                </a>
+                <a href="index4.html" class="explore-item">
+                    <i class="fas fa-beads"></i>
+                    <h4 data-ar="الأذكار" data-en="Dhikr">الأذكار</h4>
+                    <p data-ar="أذكار الصباح والمساء" data-en="Morning and evening dhikr">أذكار الصباح والمساء</p>
+                </a>
+                <a href="ramadan.html" class="explore-item">
+                    <i class="fas fa-book-open"></i>
+                    <h4 data-ar="القرآن الكريم" data-en="Holy Quran">القرآن الكريم</h4>
+                    <p data-ar="القراءة والاستماع" data-en="Read and listen">القراءة والاستماع</p>
+                </a>
+                <a href="index5.html" class="explore-item">
+                    <i class="fas fa-microphone"></i>
+                    <h4 data-ar="القراء" data-en="Reciters">القراء</h4>
+                    <p data-ar="استمع لأفضل القراء" data-en="Listen to the best reciters">استمع لأفضل القراء</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="quote-section">
+            <div class="quote-box">
+                <i class="fas fa-quote-right quote-right"></i>
+                <p data-ar="اجعل لسانك عامراً بذكر الله، تكن أسعد الناس."
+                    data-en="Keep your tongue engaged in the remembrance of Allah, and you will be the happiest of people.">
+                    اجعل لسانك عامراً بذكر الله، تكن أسعد الناس.</p>
+                <i class="fas fa-quote-left quote-left"></i>
+            </div>
+            <i class="fas fa-heart heart-icon"></i>
+        </section>
+    </main>
+
+    <script src="lang.js"></script>
+    <script src="quran-api.js"></script>
+    <script src="scrypt.js"></script>
+    <script src="script3.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>

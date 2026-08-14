@@ -1,0 +1,550 @@
+/* ================= إعدادات أساسية ================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Changa', sans-serif;
+}
+
+/* تحديد الألوان الافتراضية (الوضع الفاتح) */
+:root {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #2d3748;
+    --text-muted: #718096;
+    --primary-color: #1b5e3b;
+    --border-color: #e2e8f0;
+    --success-color: #2e8b57;
+    --danger-color: #e53e3e;
+    --warning-color: #d69e2e;
+}
+
+/* ألوان الوضع الليلي (Dark Mode) */
+body.dark-mode {
+    --bg-color: #12181b;
+    --card-bg: #1e262c;
+    --text-color: #f7fafc;
+    --text-muted: #a0aec0;
+    --primary-color: #2e8b57;
+    --border-color: #2d3748;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    padding: 20px;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* تطبيق الخلفيات والألوان على القوائم */
+.sidebar,
+.settings-container {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* ================= القائمة الجانبية Sidebar ================= */
+
+/* زر فتح القائمة */
+.open-sidebar-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #1b5e3b;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* جسم القائمة الجانبية */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 260px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.close-sidebar-btn {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.sidebar-header h3 {
+    color: var(--primary-color);
+    font-family: 'Amiri', serif;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    margin-bottom: 15px;
+}
+
+.sidebar-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-links a:hover {
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    padding-right: 18px;
+}
+
+/* الطبقة الشفافة خلف القائمة */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 1000;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* زر التبديل بين الوضعين في القائمة */
+.theme-toggle-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+}
+
+/* ================= حاوية الإعدادات ================= */
+.settings-container {
+    max-width: 650px;
+    margin: 80px auto 2rem;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.settings-title {
+    font-family: 'Amiri', serif;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.settings-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.settings-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.section-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+}
+
+/* ================= عناصر التحكم ================= */
+
+/* Toggle Switch */
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--bg-color);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 12px;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e0;
+    border-radius: 26px;
+    transition: 0.3s;
+}
+
+.toggle-slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background-color: var(--primary-color);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(24px);
+}
+
+/* زر اختيار اللغة */
+.language-selector {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.lang-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Cairo', sans-serif;
+}
+
+.lang-btn:hover {
+    border-color: var(--primary-color);
+}
+
+.lang-btn.active {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+
+/* ================= الإشعارات ================= */
+.notification-settings {
+    background: var(--bg-color);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.notif-interval {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.notif-interval label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.notif-interval select {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px 14px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    outline: none;
+}
+
+.notif-interval select:focus {
+    border-color: var(--primary-color);
+}
+
+.notif-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Cairo', sans-serif;
+}
+
+.notif-btn.start {
+    background: var(--primary-color);
+    color: white;
+}
+
+.notif-btn.start:hover {
+    opacity: 0.9;
+}
+
+.notif-btn.stop {
+    background: var(--danger-color);
+    color: white;
+}
+
+.notif-btn.stop:hover {
+    opacity: 0.9;
+}
+
+.notif-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.notif-status {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.notif-status.active {
+    color: var(--success-color);
+    background: rgba(46, 139, 87, 0.1);
+}
+
+.notif-status.inactive {
+    color: var(--text-muted);
+}
+
+/* قائمة الأذكار التي سيتم عرضها */
+.zkr-preview {
+    margin-top: 12px;
+    padding: 10px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+}
+
+.zkr-preview-title {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.zkr-preview-text {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    direction: rtl;
+}
+
+/* ================= تنبيهات داخل الصفحة (Toast) ================= */
+.inpage-toast-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+    width: 90%;
+    max-width: 420px;
+}
+
+.inpage-toast {
+    pointer-events: auto;
+    width: 100%;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-right: 5px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    animation: toastIn 0.3s ease;
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.inpage-toast.success {
+    border-right-color: var(--success-color);
+}
+
+.inpage-toast.warning {
+    border-right-color: var(--warning-color);
+}
+
+.inpage-toast.error {
+    border-right-color: var(--danger-color);
+}
+
+.inpage-toast.hide {
+    animation: toastOut 0.3s ease forwards;
+}
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toastOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+}
+
+/* ================= زر العودة للخلف ================= */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: opacity 0.2s;
+}
+
+.back-link:hover {
+    opacity: 0.8;
+}
+
+/* ================= تجاوب للشاشات الصغيرة ================= */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .settings-container {
+        margin: 70px 0.5rem 1rem;
+        padding: 1.2rem;
+    }
+
+    .settings-title {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .toggle-wrapper {
+        padding: 10px 12px;
+    }
+
+    .lang-btn {
+        min-width: 80px;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .notif-interval {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .notif-interval select {
+        min-width: 100%;
+    }
+
+    .open-sidebar-btn {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        top: 10px;
+        right: 10px;
+    }
+
+    .sidebar {
+        width: 220px;
+        right: -240px;
+    }
+
+    .sidebar-links a {
+        font-size: 0.95rem;
+        padding: 8px 10px;
+    }
+}
+

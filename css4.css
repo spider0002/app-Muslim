@@ -1,0 +1,352 @@
+/* ================= إعدادات أساسية ================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Changa', sans-serif;
+    
+}
+
+/* تحديد الألوان الافتراضية (الوضع الفاتح) */
+:root {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #2d3748;
+    --text-muted: #718096;
+    --primary-color: #1b5e3b;
+    --border-color: #e2e8f0;
+}
+
+/* ألوان الوضع الليلي (Dark Mode) */
+body.dark-mode {
+    --bg-color: #12181b;
+    --card-bg: #1e262c;
+    --text-color: #f7fafc;
+    --text-muted: #a0aec0;
+    --primary-color: #2e8b57;
+    --border-color: #2d3748;
+}
+
+body {
+    background: linear-gradient(135deg, #0d2818, #1a3a2a, #0d2818);
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: 'Cairo', sans-serif;
+    padding: 20px;
+    margin: 0;
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* تطبيق خلفية الوضع الليلي على الجسم */
+body.dark-mode {
+    background: linear-gradient(135deg, #12181b, #1e262c, #12181b);
+}
+
+/* ================= الصفحة ================= */
+.countenr {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeInUp 0.8s ease;
+    
+}
+
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= العنوان الرئيسي ================= */
+.countenr h1 {
+    font-family: 'Amiri', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #d4af37;
+    margin: 1.5rem 0 2rem;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    animation: titlePulse 2.5s ease-in-out infinite alternate;
+    line-height: 1.4;
+}
+
+@keyframes titlePulse {
+    0% {
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+    }
+    100% {
+        text-shadow: 0 0 45px rgba(212, 175, 55, 0.55);
+    }
+}
+
+/* ================= حاوية الأذكار ================= */
+.azcar {
+    background: #dbcca9;
+    border-radius: 60px;
+    border: 2px solid rgba(212, 175, 55, 0.35);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    padding: 2.5rem 2.8rem;
+    text-align: right;
+    direction: rtl;
+    position: relative;
+    overflow: hidden;
+}
+
+/* زخرفة علوية (خط ذهبي) */
+.azcar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, transparent, #d4af37, #d4af37, transparent);
+}
+
+/* ================= الفقرات ================= */
+.azcar p {
+    font-family: 'Amiri', serif;
+    font-size: 1.45rem;
+    line-height: 2.1;
+    color: #232a2e;
+    margin-bottom: 1.6rem;
+    text-align: justify;
+    transition: background 0.3s ease;
+    padding: 0.4rem 0.8rem;
+    border-radius: 10px;
+}
+
+.azcar p:hover {
+    background:#cabc9f;
+    
+}
+
+/* ================= العناوين الفرعية ================= */
+.azcar h5 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1b5e3b;
+    margin: 1.8rem 0 1rem;
+    padding: 0.6rem 1rem;
+    background: linear-gradient(90deg, #e6f4ea, rgba(230, 244, 234, 0.4), transparent);
+    border-right: 5px solid #1b5e3b;
+    border-radius: 8px;
+    text-align: right;
+    display: inline-block;
+}
+
+/* ================= خط الفاصل ================= */
+.azcar hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 2.2rem auto;
+    max-width: 80%;
+    opacity: 0.6;
+}
+
+/* ================= الوضع الليلي لحاوية الأذكار ================= */
+body.dark-mode .azcar {
+    background: #1e262c;
+    border-color: rgba(212, 175, 55, 0.5);
+}
+
+body.dark-mode .azcar p {
+    color: #f7fafc;
+}
+
+body.dark-mode .azcar p:hover {
+    background: #2a3540;
+}
+
+body.dark-mode .azcar h5 {
+    color: #2e8b57;
+    background: linear-gradient(90deg, #1a2a22, rgba(26, 42, 34, 0.4), transparent);
+    border-right-color: #2e8b57;
+}
+
+/* ================= زر التبديل بين الوضعين ================= */
+.theme-toggle-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.theme-toggle-btn:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+}
+
+/* ================= تجاوب الشاشات الصغيرة ================= */
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    .countenr h1 {
+        font-size: 2rem;
+        margin: 1rem 0 1.5rem;
+    }
+
+    .azcar {
+        padding: 1.8rem 1.2rem;
+        border-radius: 18px;
+    }
+
+    .azcar p {
+        font-size: 1.2rem;
+        line-height: 1.9;
+    }
+
+    .azcar h5 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .countenr h1 {
+        font-size: 1.6rem;
+    }
+
+    .azcar {
+        padding: 1.4rem 1rem;
+    }
+
+    .azcar p {
+        font-size: 1.1rem;
+    }
+}
+
+
+/* زر فتح القائمة */
+.open-sidebar-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #1b5e3b;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* جسم القائمة الجانبية */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px; /* مخفية جهة اليمين خارج الشاشة */
+    width: 260px;
+    height: 100%;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* القائمة وهي مفتوحة */
+.sidebar.active {
+    right: 0;
+}
+
+/* زر الإغلاق (X) */
+.close-sidebar-btn {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.sidebar-header h3 {
+    color: var(--primary-color);
+    font-family: 'Amiri', serif;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* قائمة الروابط */
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    margin-bottom: 15px;
+}
+
+.sidebar-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-links a:hover {
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    padding-right: 18px; /* تأثير سحب بسيط للداخل */
+}
+
+/* الطبقة الشفافة خلف القائمة */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 1000;
+}
+
+.overlay.active {
+    display: block;
+}
+.hero{
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-style: italic;
+    padding: 10px;
+}

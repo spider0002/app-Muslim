@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>القراء</title>
+    <link rel="stylesheet" href="home.css">
+    <!-- خطوط عربية أنيقة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;700&family=Lateef:wght@400;700&family=Noto+Naskh+Arabic:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lateef:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+<!-- زر فتح القائمة الجانبية -->
+    <button class="open-sidebar-btn" onclick="toggleSidebar()">☰ <span data-ar="القائمة" data-en="Menu">القائمة</span></button>
+
+    <!-- القائمة الجانبية -->
+    <div id="sidebar" class="sidebar">
+        <!-- زر إغلاق القائمة -->
+        <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
+        
+        <div class="sidebar-header">
+            <h3 data-ar="قائمة التنقل" data-en="Navigation Menu">قائمة التنقل</h3>
+        </div>
+
+        <!-- روابط الصفحات والأقسام -->
+        <ul class="sidebar-links">
+            <li><a href="index.html" data-ar="🏠 الصفحة الرئيسية" data-en="🏠 Home">🏠 الصفحة الرئيسية</a></li>
+            <li><a href="index4.html" onclick="toggleSidebar()" data-ar="📿 أذكار الصلاة" data-en="📿 Prayer Azkar">📿 أذكار الصلاة</a></li>
+            <li><a href="index2.html" onclick="toggleSidebar()" data-ar="✨ السبحة الإلكترونية" data-en="✨ Digital Tasbeeh">✨ السبحة الإلكترونية</a></li>
+            <li><a href="index3.html" data-ar="🕌 مواقيت الصلاة" data-en="🕌 Prayer Times">🕌 مواقيت الصلاة</a></li>
+            <li><a href="ramadan.html" data-ar="🌙 رمضان" data-en="🌙 Ramadan">🌙 رمضان</a></li>
+            <li><a href="index5.html" data-ar="قائمة الشيوخ" data-en="List of Sheikhs">قائمةالشيوخ</a></li>
+            <li><a href="settings.html" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات</a></li>
+        </ul>
+    </div>
+
+    <!-- طبقة شفافة خلف القائمة عند الفتح لإغلاقها عند الضغط في أي مكان -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+    </div>
+    <!-- البوكس الرئيسي الكبير للشيخ -->
+    <div class="main-featured-box">
+
+        <!-- صورة الشيخ -->
+        <div class="reciter-image-container">
+            <img src="Mishary Rashid Alafasy Biography_ Qari,___.jpg" alt="صورة الشيخ" class="reciter-img">
+        </div>
+
+        <!-- تفاصيل الشيخ والتحكم -->
+        <div class="reciter-details">
+            <h2 class="reciter-title" data-ar="الشيخ مشاري راشد العفاسي" data-en="Sheikh Mishary Alafasy">الشيخ مشاري راشد العفاسي</h2>
+            <p class="reciter-rewaya" data-ar="رواية حفص عن عاصم" data-en="Riwayah Hafs an Asim">رواية حفص عن عاصم</p>
+
+            <!-- قائمة اختيار السورة مع زر التشغيل -->
+            <div class="player-controls-group">
+                <select class="surah-select">
+                    <option value="" disabled selected data-ar="-- اختر السورة --" data-en="-- Select Surah --">-- اختر السورة --</option>
+                    <option value="001">001 - سورة الفاتحة</option>
+                    <option value="002">002 - سورة البقرة</option>
+                    <option value="003">003 - سورة آل عمران</option>
+                    <option value="004">004 - سورة النساء</option>
+                    <option value="005">005 - سورة المائدة</option>
+                    <option value="006">006 - سورة الأنعام</option>
+                    <option value="007">007 - سورة الأعراف</option>
+                    <option value="008">008 - سورة الأنفال</option>
+                    <option value="009">009 - سورة التوبة</option>
+                    <option value="010">010 - سورة يونس</option>
+                    <option value="011">011 - سورة هود</option>
+                    <option value="012">012 - سورة يوسف</option>
+                    <option value="013">013 - سورة الرعد</option>
+                    <option value="014">014 - سورة إبراهيم</option>
+                    <option value="015">015 - سورة الحجر</option>
+                    <option value="016">016 - سورة النحل</option>
+                    <option value="017">017 - سورة الإسراء</option>
+                    <option value="018">018 - سورة الكهف</option>
+                    <option value="019">019 - سورة مريم</option>
+                    <option value="020">020 - سورة طه</option>
+                    <option value="021">021 - سورة الأنبياء</option>
+                    <option value="022">022 - سورة الحج</option>
+                    <option value="023">023 - سورة المؤمنون</option>
+                    <option value="024">024 - سورة النور</option>
+                    <option value="025">025 - سورة الفرقان</option>
+                    <option value="026">026 - سورة الشعراء</option>
+                    <option value="027">027 - سورة النمل</option>
+                    <option value="028">028 - سورة القصص</option>
+                    <option value="029">029 - سورة العنكبوت</option>
+                    <option value="030">030 - سورة الروم</option>
+                    <option value="031">031 - سورة لقمان</option>
+                    <option value="032">032 - سورة السجدة</option>
+                    <option value="033">033 - سورة الأحزاب</option>
+                    <option value="034">034 - سورة سبأ</option>
+                    <option value="035">035 - سورة فاطر</option>
+                    <option value="036">036 - سورة يس</option>
+                    <option value="037">037 - سورة الصافات</option>
+                    <option value="038">038 - سورة ص</option>
+                    <option value="039">039 - سورة الزمر</option>
+                    <option value="040">040 - سورة غافر</option>
+                    <option value="041">041 - سورة فصلت</option>
+                    <option value="042">042 - سورة الشورى</option>
+                    <option value="043">043 - سورة الزخرف</option>
+                    <option value="044">044 - سورة الدخان</option>
+                    <option value="045">045 - سورة الجاثية</option>
+                    <option value="046">046 - سورة الأحقاف</option>
+                    <option value="047">047 - سورة محمد</option>
+                    <option value="048">048 - سورة الفتح</option>
+                    <option value="049">049 - سورة الحجرات</option>
+                    <option value="050">050 - سورة ق</option>
+                    <option value="051">051 - سورة الذاريات</option>
+                    <option value="052">052 - سورة الطور</option>
+                    <option value="053">053 - سورة النجم</option>
+                    <option value="054">054 - سورة القمر</option>
+                    <option value="055">055 - سورة الرحمن</option>
+                    <option value="056">056 - سورة الواقعة</option>
+                    <option value="057">057 - سورة الحديد</option>
+                    <option value="058">058 - سورة المجادلة</option>
+                    <option value="059">059 - سورة الحشر</option>
+                    <option value="060">060 - سورة الممتحنة</option>
+                    <option value="061">061 - سورة الصف</option>
+                    <option value="062">062 - سورة الجمعة</option>
+                    <option value="063">063 - سورة المنافقون</option>
+                    <option value="064">064 - سورة التغابن</option>
+                    <option value="065">065 - سورة الطلاق</option>
+                    <option value="066">066 - سورة التحريم</option>
+                    <option value="067">067 - سورة الملك</option>
+                    <option value="068">068 - سورة القلم</option>
+                    <option value="069">069 - سورة الحاقة</option>
+                    <option value="070">070 - سورة المعارج</option>
+                    <option value="071">071 - سورة نوح</option>
+                    <option value="072">072 - سورة الجن</option>
+                    <option value="073">073 - سورة المزمل</option>
+                    <option value="074">074 - سورة المدثر</option>
+                    <option value="075">075 - سورة القيامة</option>
+                    <option value="076">076 - سورة الإنسان</option>
+                    <option value="077">077 - سورة المرسلات</option>
+                    <option value="078">078 - سورة النبأ</option>
+                    <option value="079">079 - سورة النازعات</option>
+                    <option value="080">080 - سورة عبس</option>
+                    <option value="081">081 - سورة التكوير</option>
+                    <option value="082">082 - سورة الانفطار</option>
+                    <option value="083">083 - سورة المطففين</option>
+                    <option value="084">084 - سورة الانشقاق</option>
+                    <option value="085">085 - سورة البروج</option>
+                    <option value="086">086 - سورة الطارق</option>
+                    <option value="087">087 - سورة الأعلى</option>
+                    <option value="088">088 - سورة الغاشية</option>
+                    <option value="089">089 - سورة الفجر</option>
+                    <option value="090">090 - سورة البلد</option>
+                    <option value="091">091 - سورة الشمس</option>
+                    <option value="092">092 - سورة الليل</option>
+                    <option value="093">093 - سورة الضحى</option>
+                    <option value="094">094 - سورة الشرح</option>
+                    <option value="095">095 - سورة التين</option>
+                    <option value="096">096 - سورة العلق</option>
+                    <option value="097">097 - سورة القدر</option>
+                    <option value="098">098 - سورة البينة</option>
+                    <option value="099">099 - سورة الزلزلة</option>
+                    <option value="100">100 - سورة العاديات</option>
+                    <option value="101">101 - سورة القارعة</option>
+                    <option value="102">102 - سورة التكاثر</option>
+                    <option value="103">103 - سورة العصر</option>
+                    <option value="104">104 - سورة الهمزة</option>
+                    <option value="105">105 - سورة الفيل</option>
+                    <option value="106">106 - سورة قريش</option>
+                    <option value="107">107 - سورة الماعون</option>
+                    <option value="108">108 - سورة الكوثر</option>
+                    <option value="109">109 - سورة الكافرون</option>
+                    <option value="110">110 - سورة النصر</option>
+                    <option value="111">111 - سورة المسد</option>
+                    <option value="112">112 - سورة الإخلاص</option>
+                    <option value="113">113 - سورة الفلق</option>
+                    <option value="114">114 - سورة الناس</option>
+                </select>
+
+                <button class="main-play-btn">▶ تشغيل السورة</button>
+                <button class="stop-btn" data-ar="⏹ إيقاف" data-en="⏹ Stop">⏹ إيقاف</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main-featured-box">
+
+        <!-- صورة الشيخ -->
+        <div class="reciter-image-container">
+            <img src="download (2).jpg" alt="صورة الشيخ" class="reciter-img">
+        </div>
+
+        <!-- تفاصيل الشيخ والتحكم -->
+        <div class="reciter-details">
+            <h2 class="reciter-title" data-ar="الشيخ ماهر المعيقلي" data-en="Sheikh Maher Al-Muaiqly">الشيخ ماهر المعيقلي</h2>
+            <p class="reciter-rewaya" data-ar="رواية حفص عن عاصم" data-en="Riwayah Hafs an Asim">رواية حفص عن عاصم</p>
+
+            <!-- قائمة اختيار السورة مع زر التشغيل -->
+            <div class="player-controls-group">
+                <select class="surah-select">
+                    <option value="" disabled selected>-- اختر السورة --</option>
+                    <option value="001">001 - سورة الفاتحة</option>
+                    <option value="002">002 - سورة البقرة</option>
+                    <option value="003">003 - سورة آل عمران</option>
+                    <option value="004">004 - سورة النساء</option>
+                    <option value="005">005 - سورة المائدة</option>
+                    <option value="006">006 - سورة الأنعام</option>
+                    <option value="007">007 - سورة الأعراف</option>
+                    <option value="008">008 - سورة الأنفال</option>
+                    <option value="009">009 - سورة التوبة</option>
+                    <option value="010">010 - سورة يونس</option>
+                    <option value="011">011 - سورة هود</option>
+                    <option value="012">012 - سورة يوسف</option>
+                    <option value="013">013 - سورة الرعد</option>
+                    <option value="014">014 - سورة إبراهيم</option>
+                    <option value="015">015 - سورة الحجر</option>
+                    <option value="016">016 - سورة النحل</option>
+                    <option value="017">017 - سورة الإسراء</option>
+                    <option value="018">018 - سورة الكهف</option>
+                    <option value="019">019 - سورة مريم</option>
+                    <option value="020">020 - سورة طه</option>
+                    <option value="021">021 - سورة الأنبياء</option>
+                    <option value="022">022 - سورة الحج</option>
+                    <option value="023">023 - سورة المؤمنون</option>
+                    <option value="024">024 - سورة النور</option>
+                    <option value="025">025 - سورة الفرقان</option>
+                    <option value="026">026 - سورة الشعراء</option>
+                    <option value="027">027 - سورة النمل</option>
+                    <option value="028">028 - سورة القصص</option>
+                    <option value="029">029 - سورة العنكبوت</option>
+                    <option value="030">030 - سورة الروم</option>
+                    <option value="031">031 - سورة لقمان</option>
+                    <option value="032">032 - سورة السجدة</option>
+                    <option value="033">033 - سورة الأحزاب</option>
+                    <option value="034">034 - سورة سبأ</option>
+                    <option value="035">035 - سورة فاطر</option>
+                    <option value="036">036 - سورة يس</option>
+                    <option value="037">037 - سورة الصافات</option>
+                    <option value="038">038 - سورة ص</option>
+                    <option value="039">039 - سورة الزمر</option>
+                    <option value="040">040 - سورة غافر</option>
+                    <option value="041">041 - سورة فصلت</option>
+                    <option value="042">042 - سورة الشورى</option>
+                    <option value="043">043 - سورة الزخرف</option>
+                    <option value="044">044 - سورة الدخان</option>
+                    <option value="045">045 - سورة الجاثية</option>
+                    <option value="046">046 - سورة الأحقاف</option>
+                    <option value="047">047 - سورة محمد</option>
+                    <option value="048">048 - سورة الفتح</option>
+                    <option value="049">049 - سورة الحجرات</option>
+                    <option value="050">050 - سورة ق</option>
+                    <option value="051">051 - سورة الذاريات</option>
+                    <option value="052">052 - سورة الطور</option>
+                    <option value="053">053 - سورة النجم</option>
+                    <option value="054">054 - سورة القمر</option>
+                    <option value="055">055 - سورة الرحمن</option>
+                    <option value="056">056 - سورة الواقعة</option>
+                    <option value="057">057 - سورة الحديد</option>
+                    <option value="058">058 - سورة المجادلة</option>
+                    <option value="059">059 - سورة الحشر</option>
+                    <option value="060">060 - سورة الممتحنة</option>
+                    <option value="061">061 - سورة الصف</option>
+                    <option value="062">062 - سورة الجمعة</option>
+                    <option value="063">063 - سورة المنافقون</option>
+                    <option value="064">064 - سورة التغابن</option>
+                    <option value="065">065 - سورة الطلاق</option>
+                    <option value="066">066 - سورة التحريم</option>
+                    <option value="067">067 - سورة الملك</option>
+                    <option value="068">068 - سورة القلم</option>
+                    <option value="069">069 - سورة الحاقة</option>
+                    <option value="070">070 - سورة المعارج</option>
+                    <option value="071">071 - سورة نوح</option>
+                    <option value="072">072 - سورة الجن</option>
+                    <option value="073">073 - سورة المزمل</option>
+                    <option value="074">074 - سورة المدثر</option>
+                    <option value="075">075 - سورة القيامة</option>
+                    <option value="076">076 - سورة الإنسان</option>
+                    <option value="077">077 - سورة المرسلات</option>
+                    <option value="078">078 - سورة النبأ</option>
+                    <option value="079">079 - سورة النازعات</option>
+                    <option value="080">080 - سورة عبس</option>
+                    <option value="081">081 - سورة التكوير</option>
+                    <option value="082">082 - سورة الانفطار</option>
+                    <option value="083">083 - سورة المطففين</option>
+                    <option value="084">084 - سورة الانشقاق</option>
+                    <option value="085">085 - سورة البروج</option>
+                    <option value="086">086 - سورة الطارق</option>
+                    <option value="087">087 - سورة الأعلى</option>
+                    <option value="088">088 - سورة الغاشية</option>
+                    <option value="089">089 - سورة الفجر</option>
+                    <option value="090">090 - سورة البلد</option>
+                    <option value="091">091 - سورة الشمس</option>
+                    <option value="092">092 - سورة الليل</option>
+                    <option value="093">093 - سورة الضحى</option>
+                    <option value="094">094 - سورة الشرح</option>
+                    <option value="095">095 - سورة التين</option>
+                    <option value="096">096 - سورة العلق</option>
+                    <option value="097">097 - سورة القدر</option>
+                    <option value="098">098 - سورة البينة</option>
+                    <option value="099">099 - سورة الزلزلة</option>
+                    <option value="100">100 - سورة العاديات</option>
+                    <option value="101">101 - سورة القارعة</option>
+                    <option value="102">102 - سورة التكاثر</option>
+                    <option value="103">103 - سورة العصر</option>
+                    <option value="104">104 - سورة الهمزة</option>
+                    <option value="105">105 - سورة الفيل</option>
+                    <option value="106">106 - سورة قريش</option>
+                    <option value="107">107 - سورة الماعون</option>
+                    <option value="108">108 - سورة الكوثر</option>
+                    <option value="109">109 - سورة الكافرون</option>
+                    <option value="110">110 - سورة النصر</option>
+                    <option value="111">111 - سورة المسد</option>
+                    <option value="112">112 - سورة الإخلاص</option>
+                    <option value="113">113 - سورة الفلق</option>
+                    <option value="114">114 - سورة الناس</option>
+                </select>
+
+                <button class="main-play-btn">▶ تشغيل السورة</button>
+                <button class="stop-btn" data-ar="⏹ إيقاف" data-en="⏹ Stop">⏹ إيقاف</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main-featured-box">
+
+        <!-- صورة الشيخ -->
+        <div class="reciter-image-container">
+            <img src="download (3).jpg" alt="صورة الشيخ" class="reciter-img">
+        </div>
+
+        <!-- تفاصيل الشيخ والتحكم -->
+        <div class="reciter-details">
+            <h2 class="reciter-title" data-ar="الشيخ عبد الباسط عبد الصمد" data-en="Sheikh Abdul Basit Abdus Samad">الشيخ عبد الياسط عبد الصمد</h2>
+            <p class="reciter-rewaya" data-ar="رواية حفص عن عاصم" data-en="Riwayah Hafs an Asim">رواية حفص عن عاصم</p>
+
+            <!-- قائمة اختيار السورة مع زر التشغيل -->
+            <div class="player-controls-group">
+                <select class="surah-select">
+                    <option value="" disabled selected>-- اختر السورة --</option>
+                    <option value="001">001 - سورة الفاتحة</option>
+                    <option value="002">002 - سورة البقرة</option>
+                    <option value="003">003 - سورة آل عمران</option>
+                    <option value="004">004 - سورة النساء</option>
+                    <option value="005">005 - سورة المائدة</option>
+                    <option value="006">006 - سورة الأنعام</option>
+                    <option value="007">007 - سورة الأعراف</option>
+                    <option value="008">008 - سورة الأنفال</option>
+                    <option value="009">009 - سورة التوبة</option>
+                    <option value="010">010 - سورة يونس</option>
+                    <option value="011">011 - سورة هود</option>
+                    <option value="012">012 - سورة يوسف</option>
+                    <option value="013">013 - سورة الرعد</option>
+                    <option value="014">014 - سورة إبراهيم</option>
+                    <option value="015">015 - سورة الحجر</option>
+                    <option value="016">016 - سورة النحل</option>
+                    <option value="017">017 - سورة الإسراء</option>
+                    <option value="018">018 - سورة الكهف</option>
+                    <option value="019">019 - سورة مريم</option>
+                    <option value="020">020 - سورة طه</option>
+                    <option value="021">021 - سورة الأنبياء</option>
+                    <option value="022">022 - سورة الحج</option>
+                    <option value="023">023 - سورة المؤمنون</option>
+                    <option value="024">024 - سورة النور</option>
+                    <option value="025">025 - سورة الفرقان</option>
+                    <option value="026">026 - سورة الشعراء</option>
+                    <option value="027">027 - سورة النمل</option>
+                    <option value="028">028 - سورة القصص</option>
+                    <option value="029">029 - سورة العنكبوت</option>
+                    <option value="030">030 - سورة الروم</option>
+                    <option value="031">031 - سورة لقمان</option>
+                    <option value="032">032 - سورة السجدة</option>
+                    <option value="033">033 - سورة الأحزاب</option>
+                    <option value="034">034 - سورة سبأ</option>
+                    <option value="035">035 - سورة فاطر</option>
+                    <option value="036">036 - سورة يس</option>
+                    <option value="037">037 - سورة الصافات</option>
+                    <option value="038">038 - سورة ص</option>
+                    <option value="039">039 - سورة الزمر</option>
+                    <option value="040">040 - سورة غافر</option>
+                    <option value="041">041 - سورة فصلت</option>
+                    <option value="042">042 - سورة الشورى</option>
+                    <option value="043">043 - سورة الزخرف</option>
+                    <option value="044">044 - سورة الدخان</option>
+                    <option value="045">045 - سورة الجاثية</option>
+                    <option value="046">046 - سورة الأحقاف</option>
+                    <option value="047">047 - سورة محمد</option>
+                    <option value="048">048 - سورة الفتح</option>
+                    <option value="049">049 - سورة الحجرات</option>
+                    <option value="050">050 - سورة ق</option>
+                    <option value="051">051 - سورة الذاريات</option>
+                    <option value="052">052 - سورة الطور</option>
+                    <option value="053">053 - سورة النجم</option>
+                    <option value="054">054 - سورة القمر</option>
+                    <option value="055">055 - سورة الرحمن</option>
+                    <option value="056">056 - سورة الواقعة</option>
+                    <option value="057">057 - سورة الحديد</option>
+                    <option value="058">058 - سورة المجادلة</option>
+                    <option value="059">059 - سورة الحشر</option>
+                    <option value="060">060 - سورة الممتحنة</option>
+                    <option value="061">061 - سورة الصف</option>
+                    <option value="062">062 - سورة الجمعة</option>
+                    <option value="063">063 - سورة المنافقون</option>
+                    <option value="064">064 - سورة التغابن</option>
+                    <option value="065">065 - سورة الطلاق</option>
+                    <option value="066">066 - سورة التحريم</option>
+                    <option value="067">067 - سورة الملك</option>
+                    <option value="068">068 - سورة القلم</option>
+                    <option value="069">069 - سورة الحاقة</option>
+                    <option value="070">070 - سورة المعارج</option>
+                    <option value="071">071 - سورة نوح</option>
+                    <option value="072">072 - سورة الجن</option>
+                    <option value="073">073 - سورة المزمل</option>
+                    <option value="074">074 - سورة المدثر</option>
+                    <option value="075">075 - سورة القيامة</option>
+                    <option value="076">076 - سورة الإنسان</option>
+                    <option value="077">077 - سورة المرسلات</option>
+                    <option value="078">078 - سورة النبأ</option>
+                    <option value="079">079 - سورة النازعات</option>
+                    <option value="080">080 - سورة عبس</option>
+                    <option value="081">081 - سورة التكوير</option>
+                    <option value="082">082 - سورة الانفطار</option>
+                    <option value="083">083 - سورة المطففين</option>
+                    <option value="084">084 - سورة الانشقاق</option>
+                    <option value="085">085 - سورة البروج</option>
+                    <option value="086">086 - سورة الطارق</option>
+                    <option value="087">087 - سورة الأعلى</option>
+                    <option value="088">088 - سورة الغاشية</option>
+                    <option value="089">089 - سورة الفجر</option>
+                    <option value="090">090 - سورة البلد</option>
+                    <option value="091">091 - سورة الشمس</option>
+                    <option value="092">092 - سورة الليل</option>
+                    <option value="093">093 - سورة الضحى</option>
+                    <option value="094">094 - سورة الشرح</option>
+                    <option value="095">095 - سورة التين</option>
+                    <option value="096">096 - سورة العلق</option>
+                    <option value="097">097 - سورة القدر</option>
+                    <option value="098">098 - سورة البينة</option>
+                    <option value="099">099 - سورة الزلزلة</option>
+                    <option value="100">100 - سورة العاديات</option>
+                    <option value="101">101 - سورة القارعة</option>
+                    <option value="102">102 - سورة التكاثر</option>
+                    <option value="103">103 - سورة العصر</option>
+                    <option value="104">104 - سورة الهمزة</option>
+                    <option value="105">105 - سورة الفيل</option>
+                    <option value="106">106 - سورة قريش</option>
+                    <option value="107">107 - سورة الماعون</option>
+                    <option value="108">108 - سورة الكوثر</option>
+                    <option value="109">109 - سورة الكافرون</option>
+                    <option value="110">110 - سورة النصر</option>
+                    <option value="111">111 - سورة المسد</option>
+                    <option value="112">112 - سورة الإخلاص</option>
+                    <option value="113">113 - سورة الفلق</option>
+                    <option value="114">114 - سورة الناس</option>
+
+                </select>
+
+<button class="main-play-btn">▶ تشغيل السورة</button>
+                <button class="stop-btn" data-ar="⏹ إيقاف" data-en="⏹ Stop">⏹ إيقاف</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="main-featured-box">
+
+        <!-- صورة الشيخ -->
+        <div class="reciter-image-container">
+            <img src="alsdus.jpg" alt="صورة الشيخ" class="reciter-img">
+        </div>
+
+        <!-- تفاصيل الشيخ والتحكم -->
+        <div class="reciter-details">
+            <h2 class="reciter-title" data-ar="الشيخ عبد الرحمن السديس" data-en="Sheikh Abdul Rahman Al-Sudais">الشيخ عبد الرحمن بن عبد العزيز بن عبد الله بن محمد السديس</h2>
+            <p class="reciter-rewaya" data-ar="رواية حفص عن عاصم" data-en="Riwayah Hafs an Asim">رواية حفص عن عاصم</p>
+
+            <!-- قائمة اختيار السورة مع زر التشغيل -->
+            <div class="player-controls-group">
+                <select class="surah-select">
+                    <option value="" disabled selected>-- اختر السورة --</option>
+                    <option value="001">001 - سورة الفاتحة</option>
+                    <option value="002">002 - سورة البقرة</option>
+                    <option value="003">003 - سورة آل عمران</option>
+                    <option value="004">004 - سورة النساء</option>
+                    <option value="005">005 - سورة المائدة</option>
+                    <option value="006">006 - سورة الأنعام</option>
+                    <option value="007">007 - سورة الأعراف</option>
+                    <option value="008">008 - سورة الأنفال</option>
+                    <option value="009">009 - سورة التوبة</option>
+                    <option value="010">010 - سورة يونس</option>
+                    <option value="011">011 - سورة هود</option>
+                    <option value="012">012 - سورة يوسف</option>
+                    <option value="013">013 - سورة الرعد</option>
+                    <option value="014">014 - سورة إبراهيم</option>
+                    <option value="015">015 - سورة الحجر</option>
+                    <option value="016">016 - سورة النحل</option>
+                    <option value="017">017 - سورة الإسراء</option>
+                    <option value="018">018 - سورة الكهف</option>
+                    <option value="019">019 - سورة مريم</option>
+                    <option value="020">020 - سورة طه</option>
+                    <option value="021">021 - سورة الأنبياء</option>
+                    <option value="022">022 - سورة الحج</option>
+                    <option value="023">023 - سورة المؤمنون</option>
+                    <option value="024">024 - سورة النور</option>
+                    <option value="025">025 - سورة الفرقان</option>
+                    <option value="026">026 - سورة الشعراء</option>
+                    <option value="027">027 - سورة النمل</option>
+                    <option value="028">028 - سورة القصص</option>
+                    <option value="029">029 - سورة العنكبوت</option>
+                    <option value="030">030 - سورة الروم</option>
+                    <option value="031">031 - سورة لقمان</option>
+                    <option value="032">032 - سورة السجدة</option>
+                    <option value="033">033 - سورة الأحزاب</option>
+                    <option value="034">034 - سورة سبأ</option>
+                    <option value="035">035 - سورة فاطر</option>
+                    <option value="036">036 - سورة يس</option>
+                    <option value="037">037 - سورة الصافات</option>
+                    <option value="038">038 - سورة ص</option>
+                    <option value="039">039 - سورة الزمر</option>
+                    <option value="040">040 - سورة غافر</option>
+                    <option value="041">041 - سورة فصلت</option>
+                    <option value="042">042 - سورة الشورى</option>
+                    <option value="043">043 - سورة الزخرف</option>
+                    <option value="044">044 - سورة الدخان</option>
+                    <option value="045">045 - سورة الجاثية</option>
+                    <option value="046">046 - سورة الأحقاف</option>
+                    <option value="047">047 - سورة محمد</option>
+                    <option value="048">048 - سورة الفتح</option>
+                    <option value="049">049 - سورة الحجرات</option>
+                    <option value="050">050 - سورة ق</option>
+                    <option value="051">051 - سورة الذاريات</option>
+                    <option value="052">052 - سورة الطور</option>
+                    <option value="053">053 - سورة النجم</option>
+                    <option value="054">054 - سورة القمر</option>
+                    <option value="055">055 - سورة الرحمن</option>
+                    <option value="056">056 - سورة الواقعة</option>
+                    <option value="057">057 - سورة الحديد</option>
+                    <option value="058">058 - سورة المجادلة</option>
+                    <option value="059">059 - سورة الحشر</option>
+                    <option value="060">060 - سورة الممتحنة</option>
+                    <option value="061">061 - سورة الصف</option>
+                    <option value="062">062 - سورة الجمعة</option>
+                    <option value="063">063 - سورة المنافقون</option>
+                    <option value="064">064 - سورة التغابن</option>
+                    <option value="065">065 - سورة الطلاق</option>
+                    <option value="066">066 - سورة التحريم</option>
+                    <option value="067">067 - سورة الملك</option>
+                    <option value="068">068 - سورة القلم</option>
+                    <option value="069">069 - سورة الحاقة</option>
+                    <option value="070">070 - سورة المعارج</option>
+                    <option value="071">071 - سورة نوح</option>
+                    <option value="072">072 - سورة الجن</option>
+                    <option value="073">073 - سورة المزمل</option>
+                    <option value="074">074 - سورة المدثر</option>
+                    <option value="075">075 - سورة القيامة</option>
+                    <option value="076">076 - سورة الإنسان</option>
+                    <option value="077">077 - سورة المرسلات</option>
+                    <option value="078">078 - سورة النبأ</option>
+                    <option value="079">079 - سورة النازعات</option>
+                    <option value="080">080 - سورة عبس</option>
+                    <option value="081">081 - سورة التكوير</option>
+                    <option value="082">082 - سورة الانفطار</option>
+                    <option value="083">083 - سورة المطففين</option>
+                    <option value="084">084 - سورة الانشقاق</option>
+                    <option value="085">085 - سورة البروج</option>
+                    <option value="086">086 - سورة الطارق</option>
+                    <option value="087">087 - سورة الأعلى</option>
+                    <option value="088">088 - سورة الغاشية</option>
+                    <option value="089">089 - سورة الفجر</option>
+                    <option value="090">090 - سورة البلد</option>
+                    <option value="091">091 - سورة الشمس</option>
+                    <option value="092">092 - سورة الليل</option>
+                    <option value="093">093 - سورة الضحى</option>
+                    <option value="094">094 - سورة الشرح</option>
+                    <option value="095">095 - سورة التين</option>
+                    <option value="096">096 - سورة العلق</option>
+                    <option value="097">097 - سورة القدر</option>
+                    <option value="098">098 - سورة البينة</option>
+                    <option value="099">099 - سورة الزلزلة</option>
+                    <option value="100">100 - سورة العاديات</option>
+                    <option value="101">101 - سورة القارعة</option>
+                    <option value="102">102 - سورة التكاثر</option>
+                    <option value="103">103 - سورة العصر</option>
+                    <option value="104">104 - سورة الهمزة</option>
+                    <option value="105">105 - سورة الفيل</option>
+                    <option value="106">106 - سورة قريش</option>
+                    <option value="107">107 - سورة الماعون</option>
+                    <option value="108">108 - سورة الكوثر</option>
+                    <option value="109">109 - سورة الكافرون</option>
+                    <option value="110">110 - سورة النصر</option>
+                    <option value="111">111 - سورة المسد</option>
+                    <option value="112">112 - سورة الإخلاص</option>
+                    <option value="113">113 - سورة الفلق</option>
+                    <option value="114">114 - سورة الناس</option>
+                </select>
+
+                <button class="main-play-btn">▶ تشغيل السورة</button>
+                <button class="stop-btn" data-ar="⏹ إيقاف" data-en="⏹ Stop">⏹ إيقاف</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main-featured-box">
+
+        <!-- صورة الشيخ -->
+        <div class="reciter-image-container">
+            <img src="Sheikh Yasser Al Dosari .webp" alt="صورة الشيخ" class="reciter-img">
+        </div>
+
+        <!-- تفاصيل الشيخ والتحكم -->
+        <div class="reciter-details">
+            <h2 class="reciter-title" data-ar="الشيخ ياسر الدوسري" data-en="Sheikh Yasser Al-Dosari">الشيخ ياسر الدوسري</h2>
+            <p class="reciter-rewaya" data-ar="رواية حفص عن عاصم" data-en="Riwayah Hafs an Asim">رواية حفص عن عاصم</p>
+
+            <!-- قائمة اختيار السورة مع زر التشغيل -->
+            <div class="player-controls-group">
+                <select class="surah-select">
+                    <option value="" disabled selected>-- اختر السورة --</option>
+                    <option value="001">001 - سورة الفاتحة</option>
+                    <option value="002">002 - سورة البقرة</option>
+                    <option value="003">003 - سورة آل عمران</option>
+                    <option value="004">004 - سورة النساء</option>
+                    <option value="005">005 - سورة المائدة</option>
+                    <option value="006">006 - سورة الأنعام</option>
+                    <option value="007">007 - سورة الأعراف</option>
+                    <option value="008">008 - سورة الأنفال</option>
+                    <option value="009">009 - سورة التوبة</option>
+                    <option value="010">010 - سورة يونس</option>
+                    <option value="011">011 - سورة هود</option>
+                    <option value="012">012 - سورة يوسف</option>
+                    <option value="013">013 - سورة الرعد</option>
+                    <option value="014">014 - سورة إبراهيم</option>
+                    <option value="015">015 - سورة الحجر</option>
+                    <option value="016">016 - سورة النحل</option>
+                    <option value="017">017 - سورة الإسراء</option>
+                    <option value="018">018 - سورة الكهف</option>
+                    <option value="019">019 - سورة مريم</option>
+                    <option value="020">020 - سورة طه</option>
+                    <option value="021">021 - سورة الأنبياء</option>
+                    <option value="022">022 - سورة الحج</option>
+                    <option value="023">023 - سورة المؤمنون</option>
+                    <option value="024">024 - سورة النور</option>
+                    <option value="025">025 - سورة الفرقان</option>
+                    <option value="026">026 - سورة الشعراء</option>
+                    <option value="027">027 - سورة النمل</option>
+                    <option value="028">028 - سورة القصص</option>
+                    <option value="029">029 - سورة العنكبوت</option>
+                    <option value="030">030 - سورة الروم</option>
+                    <option value="031">031 - سورة لقمان</option>
+                    <option value="032">032 - سورة السجدة</option>
+                    <option value="033">033 - سورة الأحزاب</option>
+                    <option value="034">034 - سورة سبأ</option>
+                    <option value="035">035 - سورة فاطر</option>
+                    <option value="036">036 - سورة يس</option>
+                    <option value="037">037 - سورة الصافات</option>
+                    <option value="038">038 - سورة ص</option>
+                    <option value="039">039 - سورة الزمر</option>
+                    <option value="040">040 - سورة غافر</option>
+                    <option value="041">041 - سورة فصلت</option>
+                    <option value="042">042 - سورة الشورى</option>
+                    <option value="043">043 - سورة الزخرف</option>
+                    <option value="044">044 - سورة الدخان</option>
+                    <option value="045">045 - سورة الجاثية</option>
+                    <option value="046">046 - سورة الأحقاف</option>
+                    <option value="047">047 - سورة محمد</option>
+                    <option value="048">048 - سورة الفتح</option>
+                    <option value="049">049 - سورة الحجرات</option>
+                    <option value="050">050 - سورة ق</option>
+                    <option value="051">051 - سورة الذاريات</option>
+                    <option value="052">052 - سورة الطور</option>
+                    <option value="053">053 - سورة النجم</option>
+                    <option value="054">054 - سورة القمر</option>
+                    <option value="055">055 - سورة الرحمن</option>
+                    <option value="056">056 - سورة الواقعة</option>
+                    <option value="057">057 - سورة الحديد</option>
+                    <option value="058">058 - سورة المجادلة</option>
+                    <option value="059">059 - سورة الحشر</option>
+                    <option value="060">060 - سورة الممتحنة</option>
+                    <option value="061">061 - سورة الصف</option>
+                    <option value="062">062 - سورة الجمعة</option>
+                    <option value="063">063 - سورة المنافقون</option>
+                    <option value="064">064 - سورة التغابن</option>
+                    <option value="065">065 - سورة الطلاق</option>
+                    <option value="066">066 - سورة التحريم</option>
+                    <option value="067">067 - سورة الملك</option>
+                    <option value="068">068 - سورة القلم</option>
+                    <option value="069">069 - سورة الحاقة</option>
+                    <option value="070">070 - سورة المعارج</option>
+                    <option value="071">071 - سورة نوح</option>
+                    <option value="072">072 - سورة الجن</option>
+                    <option value="073">073 - سورة المزمل</option>
+                    <option value="074">074 - سورة المدثر</option>
+                    <option value="075">075 - سورة القيامة</option>
+                    <option value="076">076 - سورة الإنسان</option>
+                    <option value="077">077 - سورة المرسلات</option>
+                    <option value="078">078 - سورة النبأ</option>
+                    <option value="079">079 - سورة النازعات</option>
+                    <option value="080">080 - سورة عبس</option>
+                    <option value="081">081 - سورة التكوير</option>
+                    <option value="082">082 - سورة الانفطار</option>
+                    <option value="083">083 - سورة المطففين</option>
+                    <option value="084">084 - سورة الانشقاق</option>
+                    <option value="085">085 - سورة البروج</option>
+                    <option value="086">086 - سورة الطارق</option>
+                    <option value="087">087 - سورة الأعلى</option>
+                    <option value="088">088 - سورة الغاشية</option>
+                    <option value="089">089 - سورة الفجر</option>
+                    <option value="090">090 - سورة البلد</option>
+                    <option value="091">091 - سورة الشمس</option>
+                    <option value="092">092 - سورة الليل</option>
+                    <option value="093">093 - سورة الضحى</option>
+                    <option value="094">094 - سورة الشرح</option>
+                    <option value="095">095 - سورة التين</option>
+                    <option value="096">096 - سورة العلق</option>
+                    <option value="097">097 - سورة القدر</option>
+                    <option value="098">098 - سورة البينة</option>
+                    <option value="099">099 - سورة الزلزلة</option>
+                    <option value="100">100 - سورة العاديات</option>
+                    <option value="101">101 - سورة القارعة</option>
+                    <option value="102">102 - سورة التكاثر</option>
+                    <option value="103">103 - سورة العصر</option>
+                    <option value="104">104 - سورة الهمزة</option>
+                    <option value="105">105 - سورة الفيل</option>
+                    <option value="106">106 - سورة قريش</option>
+                    <option value="107">107 - سورة الماعون</option>
+                    <option value="108">108 - سورة الكوثر</option>
+                    <option value="109">109 - سورة الكافرون</option>
+                    <option value="110">110 - سورة النصر</option>
+                    <option value="111">111 - سورة المسد</option>
+                    <option value="112">112 - سورة الإخلاص</option>
+                    <option value="113">113 - سورة الفلق</option>
+                    <option value="114">114 - سورة الناس</option>
+                </select>
+
+                <button class="main-play-btn">▶ تشغيل السورة</button>
+                <button class="stop-btn" data-ar="⏹ إيقاف" data-en="⏹ Stop">⏹ إيقاف</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- شريط حالة المشغل -->
+<div id="playerStatus" class="player-status" data-ar="🎵 المشغل متوقف" data-en="🎵 Player Stopped">🎵 المشغل متوقف</div>
+
+<script src="lang.js"></script>
+<script src="quran-api.js"></script>
+<script src="script3.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-ar="مواقيت الصلاه" data-en="Prayer Times">مواقيت الصلاه</title>
+    <link rel="stylesheet" href="mm.css">
+    <!-- خطوط عربية أنيقة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;700&family=Lateef:wght@400;700&family=Noto+Naskh+Arabic:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+</head>
+</head>
+
+<body>
+    <!-- زر فتح القائمة الجانبية -->
+    <button class="open-sidebar-btn" onclick="toggleSidebar()">☰ <span data-ar="القائمة"
+            data-en="Menu">القائمة</span></button>
+
+    <!-- القائمة الجانبية -->
+    <div id="sidebar" class="sidebar">
+        <!-- زر إغلاق القائمة -->
+        <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
+
+        <div class="sidebar-header">
+            <h3 data-ar="قائمة التنقل" data-en="Navigation Menu">قائمة التنقل</h3>
+        </div>
+
+        <!-- روابط الصفحات والأقسام -->
+        <ul class="sidebar-links">
+            <li><a href="index.html" data-ar="🏠 الصفحة الرئيسية" data-en="🏠 Home">🏠 الصفحة الرئيسية</a></li>
+            <li><a href="index4.html" onclick="toggleSidebar()" data-ar="📿 أذكار الصلاة" data-en="📿 Prayer Azkar">📿
+                    أذكار الصلاة</a></li>
+            <li><a href="index2.html" onclick="toggleSidebar()" data-ar="✨ السبحة الإلكترونية"
+                    data-en="✨ Digital Tasbeeh">✨ السبحة الإلكترونية</a></li>
+            <li><a href="index3.html" data-ar="🕌 مواقيت الصلاة" data-en="🕌 Prayer Times">🕌 مواقيت الصلاة</a></li>
+            <li><a href="ramadan.html" data-ar="🌙 رمضان" data-en="🌙 Ramadan">🌙 رمضان</a></li>
+            <li><a href="index5.html" data-ar="قائمة الشيوخ" data-en="List of Sheikhs">قائمةالشيوخ</a></li>
+            <li><a href="settings.html" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات</a></li>
+        </ul>
+    </div>
+
+    <!-- طبقة شفافة خلف القائمة عند الفتح لإغلاقها عند الضغط في أي مكان -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+
+    <!-- ================= قسم مواقيت الصلاة ================= -->
+
+    <!-- البوكس الخاص بالصلاة القادمة والعداد التنازلي -->
+
+    <div class="next-prayer-box">
+        <div class="next-prayer-info">
+            <span data-ar="الصلاة القادمة:" data-en="Next Prayer:"></span>
+            <strong id="nextPrayerName">--</strong>
+        </div>
+
+        <div class="countdown-timer" id="countdownTimer">
+            00:00:00
+        </div>
+
+
+    </div>
+
+    <div class="prayer-container">
+        <h2 class="prayer-title" data-ar="🕌 مواقيت الصلاة اليوم" data-en="🕌 Today's Prayer Times">🕌 مواقيت الصلاة
+            اليوم</h2>
+        <p id="locationText" class="location-text" data-ar="جاري تحديد الموقع..." data-en="Detecting location...">جاري
+            تحديد الموقع...</p>
+
+        <!-- كروت مواقيت الصلاة -->
+        <div class="prayer-cards">
+            <div class="prayer-card">
+                <span class="prayer-name" data-ar="الفجر" data-en="Fajr">الفجر</span>
+                <span id="fajr" class="prayer-time">--:--</span>
+            </div>
+            <div class="prayer-card">
+                <span class="prayer-name" data-ar="الشروق" data-en="Sunrise">الشروق</span>
+                <span id="sunrise" class="prayer-time">--:--</span>
+            </div>
+            <div class="prayer-card">
+                <span class="prayer-name" data-ar="الظهر" data-en="Dhuhr">الظهر</span>
+                <span id="dhuhr" class="prayer-time">--:--</span>
+            </div>
+            <div class="prayer-card">
+                <span class="prayer-name" data-ar="العصر" data-en="Asr">العصر</span>
+                <span id="asr" class="prayer-time">--:--</span>
+            </div>
+            <div class="prayer-card">
+                <span class="prayer-name" data-ar="المغرب" data-en="Maghrib">المغرب</span>
+                <span id="maghrib" class="prayer-time">--:--</span>
+            </div>
+            <div class="prayer-card">
+                <span class="prayer-name" data-ar="العشاء" data-en="Isha">العشاء</span>
+                <span id="isha" class="prayer-time">--:--</span>
+            </div>
+        </div>
+    </div>
+    <script src="lang.js"></script>
+    <script src="quran-api.js"></script>
+    <script src="script3.js"></script>
+    <script src="script2.js"></script>
+</body>
+
+</html>

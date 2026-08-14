@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-ar="الإعدادات" data-en="Settings">الإعدادات</title>
+    <link rel="stylesheet" href="settings.css">
+    <!-- خطوط عربية أنيقة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;700&family=Lateef:wght@400;700&family=Noto+Naskh+Arabic:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- زر فتح القائمة الجانبية -->
+    <button class="open-sidebar-btn" onclick="toggleSidebar()">☰ <span data-ar="القائمة" data-en="Menu">القائمة</span></button>
+
+    <!-- القائمة الجانبية -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
+        
+        <div class="sidebar-header">
+            <h3 data-ar="قائمة التنقل" data-en="Navigation Menu">قائمة التنقل</h3>
+        </div>
+
+        <ul class="sidebar-links">
+            <li><a href="index.html" data-ar="🏠 الصفحة الرئيسية" data-en="🏠 Home">🏠 الصفحة الرئيسية</a></li>
+            <li><a href="index4.html" onclick="toggleSidebar()" data-ar="📿 أذكار الصلاة" data-en="📿 Prayer Azkar">📿 أذكار الصلاة</a></li>
+            <li><a href="index2.html" onclick="toggleSidebar()" data-ar="✨ السبحة الإلكترونية" data-en="✨ Digital Tasbeeh">✨ السبحة الإلكترونية</a></li>
+            <li><a href="index3.html" onclick="toggleSidebar()" data-ar="🕌 مواقيت الصلاة" data-en="🕌 Prayer Times">🕌 مواقيت الصلاة</a></li>
+            <li><a href="ramadan.html" onclick="toggleSidebar()" data-ar="🌙 رمضان" data-en="🌙 Ramadan">🌙 رمضان</a></li>
+            <li><a href="index5.html" data-ar="قائمة الشيوخ" data-en="List of Sheikhs">قائمةالشيوخ</a></li>
+            <li><a href="settings.html" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات</a></li>
+        </ul>
+    </div>
+
+    <!-- طبقة شفافة خلف القائمة -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- ================= حاوية الإعدادات ================= -->
+    <div class="settings-container">
+        <a href="index.html" class="back-link" data-ar="← العودة للرئيسية" data-en="← Back to Home">← العودة للرئيسية</a>
+        
+        <h1 class="settings-title" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات</h1>
+
+        <!-- ===== قسم المظهر ===== -->
+        <div class="settings-section">
+            <h2 class="section-title" data-ar="🎨 المظهر" data-en="🎨 Appearance">🎨 المظهر</h2>
+            <p class="section-desc" data-ar="تحكم في مظهر التطبيق" data-en="Control the appearance of the site">تحكم في مظهر الموقع</p>
+            
+            <div class="toggle-wrapper">
+                <span class="toggle-label" data-ar="🌙 الوضع الليلي" data-en="🌙 Dark Mode">🌙 الوضع الليلي</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- ===== قسم اللغة ===== -->
+        <div class="settings-section">
+            <h2 class="section-title" data-ar="🌐 اللغة" data-en="🌐 Language">🌐 اللغة</h2>
+            <p class="section-desc" data-ar="اختر اللغة المناسبة لك" data-en="Choose your preferred language">اختر اللغة المناسبة لك</p>
+            
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="ar" data-ar="🇸🇦 العربية" data-en="🇸🇦 Arabic" onclick="setLanguage('ar')">🇸🇦 العربية</button>
+                <button class="lang-btn" data-lang="en" data-ar="🇬🇧 الإنجليزية" data-en="🇬🇧 English" onclick="setLanguage('en')">🇬🇧 English</button>
+            </div>
+        </div>
+
+        <!-- ===== قسم إشعارات الأذكار ===== -->
+        <div class="settings-section">
+            <h2 class="section-title" data-ar="📿 إشعارات الأذكار" data-en="📿 Azkar Notifications">📿 إشعارات الأذكار</h2>
+            <p class="section-desc" data-ar="استقبل تذكيرات بالأذكار على مدار اليوم" data-en="Receive zikr reminders throughout the day">استقبل تذكيرات بالأذكار على مدار اليوم</p>
+            
+            <div class="notification-settings">
+                <div class="notif-interval">
+                    <label data-ar="التذكير كل:" data-en="Remind every:">التذكير كل:</label>
+                    <select id="notifInterval">
+                        <option value="1" data-ar="دقيقة واحدة" data-en="1 minute">دقيقة واحدة</option>
+                        <option value="5" data-ar="5 دقائق" data-en="5 minutes">5 دقائق</option>
+                        <option value="15" data-ar="15 دقيقة" data-en="15 minutes">15 دقيقة</option>
+                        <option value="30" selected data-ar="30 دقيقة" data-en="30 minutes">30 دقيقة</option>
+                        <option value="60" data-ar="ساعة واحدة" data-en="1 hour">ساعة واحدة</option>
+                        <option value="120" data-ar="ساعتين" data-en="2 hours">ساعتين</option>
+                    </select>
+                </div>
+                
+                <button id="notificationBtn" class="notif-btn start" data-ar="🔔 بدء الإشعارات" data-en="🔔 Start Notifications" >🔔 بدء الإشعارات</button>
+                
+                <div id="notifStatus" class="notif-status inactive" data-ar="الإشعارات متوقفة" data-en="Notifications Stopped">الإشعارات متوقفة</div>
+                
+                <!-- معاينة الذكر -->
+                <div class="zkr-preview">
+                    <div class="zkr-preview-title" data-ar="آخر ذكر تم إرساله:" data-en="Last zikr sent:">آخر ذكر تم إرساله:</div>
+                    <div id="zkrPreviewText" class="zkr-preview-text" style="direction: rtl;">--</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== قسم إشعارات الصلاة ===== -->
+        <div class="settings-section" id="prayerNotifSection">
+            <h2 class="section-title" data-ar="🕌 إشعارات الصلاة" data-en="🕌 Prayer Notifications">🕌 إشعارات الصلاة</h2>
+            <p class="section-desc" data-ar="تنبيه قبل موعد الصلاة بفترة قابلة للتخصيص" data-en="Get notified before each prayer time with a customizable reminder">تنبيه قبل موعد الصلاة بفترة قابلة للتخصيص</p>
+            
+<div class="notification-settings">
+                <!-- اختيار الوقت قبل الصلاة -->
+                <div class="notif-interval">
+                    <label data-ar="التنبيه قبل الصلاة بـ:" data-en="Notify before prayer by:">التنبيه قبل الصلاة بـ:</label>
+                    <select id="prayerNotifBefore">
+                        <option value="1" data-ar="دقيقة واحدة" data-en="1 minute">دقيقة واحدة</option>
+                        <option value="3" data-ar="3 دقائق" data-en="3 minutes">3 دقائق</option>
+                        <option value="5" selected data-ar="5 دقائق" data-en="5 minutes">5 دقائق</option>
+                        <option value="10" data-ar="10 دقائق" data-en="10 minutes">10 دقائق</option>
+                        <option value="15" data-ar="15 دقيقة" data-en="15 minutes">15 دقيقة</option>
+                        <option value="30" data-ar="30 دقيقة" data-en="30 minutes">30 دقيقة</option>
+                    </select>
+                </div>
+
+                <!-- تشغيل صوت الأذان -->
+<div class="notif-interval">
+                    <label data-ar="📢 تشغيل صوت الأذان عند الصلاة" data-en="📢 Play Adhan at prayer time">📢 تشغيل صوت الأذان عند الصلاة</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="adhanToggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <!-- زر تجربة صوت الأذان -->
+                
+                
+                <button id="prayerNotifBtn" class="notif-btn start" data-ar="🔔 تفعيل إشعارات الصلاة" data-en="🔔 Enable Prayer Alerts">🔔 تفعيل إشعارات الصلاة</button>
+                
+                <div id="prayerNotifStatus" class="notif-status inactive" data-ar="إشعارات الصلاة متوقفة" data-en="Prayer Alerts Stopped">إشعارات الصلاة متوقفة</div>
+                
+                <!-- حالة الموقع -->
+                <div id="prayerLocationStatus" class="zkr-preview">
+                    <div class="zkr-preview-title" data-ar="حالة الموقع:" data-en="Location Status:">حالة الموقع:</div>
+                    <div id="locationStatusText" class="zkr-preview-text" style="direction: rtl; font-size: 0.9rem;">جاري تحديد الموقع...</div>
+                </div>
+                
+                <!-- آخر صلاة تم التنبيه لها -->
+                <div class="zkr-preview" id="lastPrayerAlertDiv" style="display: none;">
+                    <div class="zkr-preview-title" data-ar="آخر تنبيه:" data-en="Last Alert:">آخر تنبيه:</div>
+                    <div id="lastPrayerAlertText" class="zkr-preview-text" style="direction: rtl;">--</div>
+                </div>
+
+            </div> <!-- نهاية notification-settings -->
+        </div> <!-- نهاية settings-section الإشعارات -->
+    </div> <!-- نهاية settings-container -->
+
+<!-- حاوية التنبيهات داخل الصفحة -->
+    <div id="inPageToastContainer" class="inpage-toast-container"></div>
+
+    <script src="lang.js"></script>
+    <script src="quran-api.js"></script>
+    <script src="script3.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html>
+

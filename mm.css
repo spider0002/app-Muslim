@@ -1,0 +1,348 @@
+
+/* ================= إعدادات أساسية ================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Changa', sans-serif;
+}
+
+/* تحديد الألوان الافتراضية (الوضع الفاتح) */
+:root {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #2d3748;
+    --text-muted: #718096;
+    --primary-color: #1b5e3b;
+    --border-color: #e2e8f0;
+}
+
+/* ألوان الوضع الليلي (Dark Mode) */
+body.dark-mode {
+    --bg-color: #12181b;
+    --card-bg: #1e262c;
+    --text-color: #f7fafc;
+    --text-muted: #a0aec0;
+    --primary-color: #2e8b57;
+    --border-color: #2d3748;
+}
+
+/* تطبيق المتغيرات على جسم الصفحة والعناصر */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* تطبيق الخلفيات والألوان على الكروت والقوائم */
+.prayer-container,
+.sidebar {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+.location-text {
+    color: var(--text-muted) !important;
+}
+
+/* زر التبديل بين الوضعين */
+.theme-toggle-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+}
+
+.open-sidebar-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #1b5e3b;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* جسم القائمة الجانبية */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px; /* مخفية جهة اليمين خارج الشاشة */
+    width: 260px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* القائمة وهي مفتوحة */
+.sidebar.active {
+    right: 0;
+}
+
+/* زر الإغلاق (X) */
+.close-sidebar-btn {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.sidebar-header h3 {
+    color: var(--primary-color);
+    font-family: 'Amiri', serif;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* قائمة الروابط */
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    margin-bottom: 15px;
+}
+
+.sidebar-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-links a:hover {
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    padding-right: 18px; /* تأثير سحب بسيط للداخل */
+}
+
+/* الطبقة الشفافة خلف القائمة */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 1000;
+}
+
+.overlay.active {
+    display: block;
+}
+
+
+
+/* ================= مواقيت الصلاة ================= */
+.prayer-container {
+    background: #dde6dd;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    transition: 0.3;
+}
+
+
+
+.prayer-title {
+    font-family: 'Amiri', serif;
+    color: #1b5e3b;
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.location-text {
+    color: #212222;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    
+}
+
+.prayer-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 12px;
+}
+
+.prayer-card {
+    background: #eef1ee;
+    border: 2px solid #e6f4ea;
+    border-radius: 12px;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.prayer-card:hover {
+    background: #1b5e3b;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+.prayer-card:hover .prayer-name,
+.prayer-card:hover .prayer-time {
+    color: #ffffff;
+}
+
+.prayer-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+.prayer-time {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #070707;
+    direction: ltr;
+}
+
+/* تصميم كارت الصلاة القادمة والعداد */
+.next-prayer-box {
+    background: linear-gradient(135deg, #0f2c1d, #113f28);
+    color: #f3f8f3;
+    padding: 1.2rem;
+    border-radius: 14px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 6px 15px rgba(27, 94, 59, 0.2);
+     display: flex;
+    justify-content: center;
+    align-items:center ;
+}
+
+.next-prayer-info {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.next-prayer-info strong {
+    color: #ffd700; /* لون ذهبي اسم الصلاة */
+    font-size: 1.25rem;
+}
+
+.countdown-timer {
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: monospace; /* عشان الأرقام تثبت وماتهزش الكلام */
+    direction: ltr;
+}
+
+
+/* ================= تجاوب للشاشات الصغيرة ================= */
+@media (max-width: 600px) {
+    .prayer-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .prayer-card {
+        padding: 0.8rem 0.3rem;
+    }
+
+    .prayer-title {
+        font-size: 1.3rem;
+    }
+
+    .next-prayer-box {
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+        gap: 8px;
+    }
+
+    .next-prayer-info {
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .next-prayer-info strong {
+        font-size: 1.1rem;
+    }
+
+    .countdown-timer {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .prayer-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .prayer-container {
+        padding: 0.8rem;
+        margin: 1rem 0.5rem;
+    }
+
+    .prayer-card {
+        padding: 0.6rem 0.2rem;
+    }
+
+    .prayer-name {
+        font-size: 0.85rem;
+    }
+
+    .prayer-time {
+        font-size: 0.95rem;
+    }
+
+    .next-prayer-box {
+        margin-bottom: 1rem;
+    }
+
+    .open-sidebar-btn {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        top: 10px;
+        right: 10px;
+    }
+
+    .sidebar {
+        width: 220px;
+        right: -240px;
+    }
+
+    .sidebar-links a {
+        font-size: 0.95rem;
+        padding: 8px 10px;
+    }
+}

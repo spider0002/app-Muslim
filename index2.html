@@ -1,0 +1,95 @@
+<!-- ================= قسم السبحة الإلكترونية ================= -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-ar="السبحة الإلكترونية" data-en="Digital Tasbeeh">السبحة الإلكترونية</title>
+    <link rel="stylesheet" href="tasbeeh.css">
+    <!-- خطوط عربية أنيقة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;700&family=Lateef:wght@400;700&family=Noto+Naskh+Arabic:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+</head>
+
+<body>
+
+    <div class="div">
+        <h3 data-ar="صلي علي النبي" data-en="Bless the Prophet">صلي علي النبي</h3>
+    </div>
+
+
+    <!-- القائمة الجانبية (يمين) -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
+
+        <div class="sidebar-header">
+            <h3 data-ar="قائمة التنقل" data-en="Navigation Menu">قائمة التنقل</h3>
+        </div>
+
+        <!-- روابط الصفحات والأقسام -->
+        <ul class="sidebar-links">
+            <li><a href="index.html" data-ar="🏠 الصفحة الرئيسية" data-en="🏠 Home">🏠 الصفحة الرئيسية</a></li>
+            <li><a href="index4.html" onclick="toggleSidebar()" data-ar="📿 أذكار الصلاة" data-en="📿 Prayer Azkar">📿
+                    أذكار الصلاة</a></li>
+            <li><a href="index2.html" onclick="toggleSidebar()" data-ar="✨ السبحة الإلكترونية"
+                    data-en="✨ Digital Tasbeeh">✨ السبحة الإلكترونية</a></li>
+            <li><a href="index3.html" data-ar="🕌 مواقيت الصلاة" data-en="🕌 Prayer Times">🕌 مواقيت الصلاة</a></li>
+            <li><a href="ramadan.html" data-ar="🌙 رمضان" data-en="🌙 Ramadan">🌙 رمضان</a></li>
+            <li><a href="index5.html" data-ar="قائمة الشيوخ" data-en="List of Sheikhs">قائمةالشيوخ</a></li>
+            <li><a href="settings.html" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات</a></li>
+
+        </ul>
+    </div>
+
+
+    <!-- الطبقة الشفافة -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- زر فتح القائمة (يمين) -->
+    <button class="open-sidebar-btn" onclick="toggleSidebar()">
+        ☰ <span data-ar="القائمة" data-en="Menu">القائمة</span>
+    </button>
+    <div id="#tasbeeh-section" class="tasbeeh-container">
+        <h2 class="tasbeeh-title" data-ar="📿 السبحة الإلكترونية" data-en="📿 Digital Tasbeeh">📿 السبحة الإلكترونية
+        </h2>
+
+        <!-- قائمة اختيار الذكر -->
+        <select id="tasbeehSelect" class="tasbeeh-select" onchange="changeZikr()">
+            <option value="سبحان الله">سبحان الله</option>
+            <option value="الحمد لله">الحمد لله</option>
+            <option value="لا إله إلا الله">لا إله إلا الله</option>
+            <option value="الله أكبر">الله أكبر</option>
+            <option value="أستغفر الله العظيم">أستغفر الله العظيم</option>
+            <option value="لا حول ولا قوة إلا بالله">لا حول ولا قوة إلا بالله</option>
+            <option value="اللهم صلِّ وسلم على نبينا محمد">اللهم صلِّ وسلم على نبينا محمد</option>
+        </select>
+
+        <!-- شاشة العداد -->
+        <div class="counter-display">
+            <span id="counterValue">0</span>
+        </div>
+
+        <!-- الأزرار -->
+        <div class="tasbeeh-actions">
+            <!-- زر التسبيح الكبير -->
+            <button class="tasbeeh-btn" onclick="incrementCounter()" data-ar="سبِّح" data-en="Tasbeeh">سبِّح</button>
+            <!-- زر إعادة الضبط -->
+            <button class="reset-btn" onclick="resetCounter()" title="إعادة الضبط" data-ar="🔄 صفر"
+                data-en="🔄 Reset">🔄 صفر</button>
+        </div>
+    </div>
+
+
+
+    <script src="lang.js"></script>
+    <script src="quran-api.js"></script>
+    <script src="scrypt.js"></script>
+    <script src="script3.js"></script>
+
+</body>

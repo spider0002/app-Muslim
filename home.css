@@ -1,0 +1,420 @@
+*{
+    font-family: 'Changa', sans-serif;
+}
+/* البوكس الرئيسي الكبير */
+.main-featured-box {
+    background: #fdfffe;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid #edf2f7;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.main-featured-box .reciter-img:hover{
+    transform: rotate(15deg)
+}
+/* container الصورة */
+.reciter-image-container {
+    flex-shrink: 0;
+}
+
+.reciter-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 4px solid #110f0f;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: 1s;
+}
+
+/* تفاصيل الشيخ */
+.reciter-details {
+    flex-grow: 1;
+}
+
+.reciter-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.8rem;
+    color: #807b7b;
+    margin-bottom: 0.3rem;
+}
+
+.reciter-rewaya {
+    color: #718096;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+/* مجموعة التحكم (القائمة والزرار) */
+.player-controls-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* قائمة اختيار السورة */
+.surah-select {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #f8fafc;
+    color: #2d3748;
+    cursor: pointer;
+    font-family: 'Cairo', sans-serif;
+}
+
+.surah-select:focus {
+    border-color: #1b5e3b;
+}
+
+/* زرار التشغيل الرئيسي */
+.main-play-btn {
+    background: #1b5e3b;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.75rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.main-play-btn:hover {
+    background: #113f28;
+    transform: translateY(-2px);
+}
+
+/* زرار إيقاف التشغيل */
+.stop-btn {
+    background: #c0392b;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    display: none;
+}
+
+.stop-btn:hover {
+    background: #962d22;
+    transform: translateY(-2px);
+}
+
+/* ================= شريط تقدم التشغيل ================= */
+.player-progress {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 14px;
+    padding: 10px 12px;
+    background: rgba(27, 94, 59, 0.08);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+
+.player-progress .time-label {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-color);
+    min-width: 42px;
+    text-align: center;
+    direction: ltr;
+}
+
+.player-progress .progress-bar {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 6px;
+    background: linear-gradient(to right, #1b5e3b var(--progress, 0%), #e2e8f0 var(--progress, 0%));
+    outline: none;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+.player-progress .progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1b5e3b;
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.player-progress .progress-bar::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1b5e3b;
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+body.dark-mode .player-progress {
+    background: rgba(46, 139, 87, 0.15);
+}
+
+body.dark-mode .player-progress .progress-bar {
+    background: linear-gradient(to right, #2e8b57 var(--progress, 0%), #2d3748 var(--progress, 0%));
+}
+
+.notification-btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.notification-btn:hover {
+    opacity: 0.9;
+}
+
+/* التجاوب مع الشاشات الصغيرة (الموبايل) */
+@media (max-width: 600px) {
+    .main-featured-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .reciter-img {
+        width: 130px;
+        height: 130px;
+    }
+
+    .player-controls-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .surah-select, .main-play-btn {
+        width: 100%;
+    }
+}
+
+/* ================= شريط حالة المشغل ================= */
+.player-status {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #0d2818, #1b5e3b);
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    z-index: 999;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+    border-top: 2px solid #d4af37;
+    transition: all 0.3s ease;
+}
+
+
+
+
+/* ================= القائمة الجانبية Sidebar ================= */
+
+/* زر فتح القائمة */
+.open-sidebar-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #1b5e3b;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* جسم القائمة الجانبية */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px; /* مخفية جهة اليمين خارج الشاشة */
+    width: 260px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* القائمة وهي مفتوحة */
+.sidebar.active {
+    right: 0;
+}
+
+/* زر الإغلاق (X) */
+.close-sidebar-btn {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.sidebar-header h3 {
+    color: var(--primary-color);
+    font-family: 'Amiri', serif;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* قائمة الروابط */
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    margin-bottom: 15px;
+}
+
+.sidebar-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-links a:hover {
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    padding-right: 18px; /* تأثير سحب بسيط للداخل */
+}
+
+/* الطبقة الشفافة خلف القائمة */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 1000;
+}
+
+.overlay.active {
+    display: block;
+}
+.hero{
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-style: italic;
+    padding: 10px;
+}
+
+
+/* ================= إعدادات أساسية ================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* تحديد الألوان الافتراضية (الوضع الفاتح) */
+:root {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #2d3748;
+    --text-muted: #718096;
+    --primary-color: #1b5e3b;
+    --border-color: #e2e8f0;
+}
+
+/* ألوان الوضع الليلي (Dark Mode) */
+body.dark-mode {
+    --bg-color: #12181b;
+    --card-bg: #1e262c;
+    --text-color: #f7fafc;
+    --text-muted: #a0aec0;
+    --primary-color: #2e8b57;
+    --border-color: #2d3748;
+}
+
+/* تطبيق المتغيرات على جسم الصفحة والعناصر */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    padding-bottom: 50px; /* مساحة لشريط المشغل */
+}
+
+/* تطبيق الخلفيات والألوان على الكروت والقوائم */
+.main-featured-box,
+.zkr-card,
+.tasbeeh-container,
+.prayer-container,
+.sidebar {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+.location-text,
+.reciter-rewaya,
+.zkr-info {
+    color: var(--text-muted) !important;
+}
+
+/* زر التبديل بين الوضعين */
+.theme-toggle-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
