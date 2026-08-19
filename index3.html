@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-ar="مواقيت الصلاه" data-en="Prayer Times">مواقيت الصلاه</title>
-    <link rel="stylesheet" href="mm.css">
+    <link rel="stylesheet" href="mm.css?v=1.0">
     <link rel="stylesheet" href="style.css">
     <!-- خطوط عربية أنيقة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,6 +72,12 @@
             اليوم</h2>
         <p id="locationText" class="location-text" data-ar="جاري تحديد الموقع..." data-en="Detecting location...">جاري
             تحديد الموقع...</p>
+            <!-- زر تحديد الموقع الجغرافي -->
+<div class="location-btn-wrapper">
+    <button id="getLocBtn" onclick="getUserLocation()" class="location-btn">
+        📍 <span data-ar="تحديد موقعي الآن" data-en="Use My Location">تحديد موقعي الآن</span>
+    </button>
+</div>
 
         <!-- كروت مواقيت الصلاة -->
         <div class="prayer-cards">
@@ -103,7 +109,7 @@
     </div>
     <script src="lang.js"></script>
     <script src="quran-api.js"></script>
-    <script src="script3.js"></script>
+    <script src="script3.js?v=1.0"></script>
     <script src="script2.js"></script>
     <script src="scrypt.js"></script>
 </body>

@@ -128,3 +128,92 @@ document.addEventListener("DOMContentLoaded", () => {
     if (overlay) overlay.classList.remove("active");
 });
 
+// ================= جلب مواقيت الصلاة والموقع =================
+
+// دالة جلب الإحداثيات عند ضغط الزر
+function getUserLocation() {
+    const locText = document.getElementById('locationText');
+    const locBtn = document.getElementById('getLocBtn');
+
+    if (!navigator.geolocation) {
+        if (locText) locText.textContent = "خدمة الموقع غير مدعومة في متصفحك";
+        return;
+    }
+
+    if (locText) locText.textContent = "جاري تحديد الموقع...";
+    if (locBtn) locBtn.disabled = true;
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            
+            // حفظ الإحداثيات للاستخدام المستقبلي
+            localStorage.setItem('userLat', lat);
+            localStorage.setItem('userLng', lng);
+
+            fetchPrayerTimesByCoords(lat, lng);
+            if (locBtn) locBtn.disabled = false;
+        },
+        (error) => {
+            if (locBtn) locBtn.disabled = false;
+            if (locText) {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        locText.textContent = "تم رفض إذن الوصول للموقع.";
+                        break;
+                    default:
+                        locText.textContent = "تعذر تحديد الموقع الجغرافي.";
+                        break;
+                }
+            }
+        }
+    );
+}
+
+// دالة جلب المواقيت من Aladhan API بالإحداثيات
+async function fetchPrayerTimesByCoords(lat, lng) {
+    const locText = document.getElementById('locationText');
+    try {
+        const response = await fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lng}&method=5`);
+        const data = await response.json();
+
+        if (data && data.code === 200) {
+            const timings = data.data.timings;
+            const meta = data.data.meta;
+
+            // تحديث العرض في الصفحة
+            document.getElementById('fajr').textContent = formatTime(timings.Fajr);
+            document.getElementById('sunrise').textContent = formatTime(timings.Sunrise);
+            document.getElementById('dhuhr').textContent = formatTime(timings.Dhuhr);
+            document.getElementById('asr').textContent = formatTime(timings.Asr);
+            document.getElementById('maghrib').textContent = formatTime(timings.Maghrib);
+            document.getElementById('isha').textContent = formatTime(timings.Isha);
+
+            if (locText) {
+                locText.textContent = `📍 المنطقة الزمنية: ${meta.timezone}`;
+            }
+        }
+    } catch (err) {
+        if (locText) locText.textContent = "حدث خطأ أثناء جلب مواقيت الصلاة.";
+    }
+}
+
+// دالة تحويل الوقت لنظام 12 ساعة
+function formatTime(time24) {
+    const [hours, minutes] = time24.split(':');
+    let h = parseInt(hours, 10);
+    const ampm = h >= 12 ? 'م' : 'ص';
+    h = h % 12 || 12;
+    return `${h}:${minutes} ${ampm}`;
+}
+
+// تشغيل جلب المواقيت تلقائياً إذا كان الموقع مخزناً سابقاً
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLat = localStorage.getItem('userLat');
+    const savedLng = localStorage.getItem('userLng');
+
+    if (savedLat && savedLng) {
+        fetchPrayerTimesByCoords(savedLat, savedLng);
+    }
+});

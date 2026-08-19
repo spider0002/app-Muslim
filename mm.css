@@ -346,3 +346,39 @@ body {
         padding: 8px 10px;
     }
 }
+
+/* زر تحديد الموقع الجغرافي */
+
+.location-btn-wrapper {
+    text-align: center;
+    margin: 15px 0 25px 0;
+}
+
+.location-btn {
+    padding: 10px 22px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background-color: #2e7d32;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.location-btn:hover {
+    background-color: #1b5e20;
+}
+
+.location-btn:active {
+    transform: scale(0.98);
+}
+
+.location-btn:disabled {
+    background-color: #888888;
+    cursor: not-allowed;
+}
+
