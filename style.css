@@ -76,118 +76,295 @@ body {
     }
 }
 
-/* زر الفتح - جهة اليمين */
-.open-sidebar-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    left: auto;
-    background-color: var(--btn-green);
-    color: #ffffff;
-    border: none;
-    padding: 10px 18px;
-    font-size: 1.1rem;
-    font-family: inherit;
-    border-radius: 6px;
-    cursor: pointer;
-    z-index: 999;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
+
+
+
+
+/* ==========================================
+   1. وضع الكمبيوتر (أكبر من 768px)
+   ========================================== */
+@media screen and (min-width: 769px) {
+    /* الزرار فوق على اليمين وشغال تماماً */
+    .open-sidebar-btn {
+        position: fixed !important;
+        top: 25px !important;
+        right: 25px !important;
+        background-color: var(--btn-green) !important;
+        color: #ffffff !important;
+        border: 1px solid var(--primary-green) !important;
+        padding: 10px 18px !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
+        font-weight: bold !important;
+        z-index: 10005 !important; /* ضمان إنه فوق كل حاجة للضغط عليه */
+        display: inline-block !important;
+    }
+
+    /* القائمة الجانبية في الكمبيوتر */
+    .sidebar {
+        position: fixed !important;
+        top: 80px !important;
+        right: -320px !important;
+        width: var(--sidebar-width) !important;
+        height: auto !important;
+        max-height: calc(100vh - 100px) !important;
+        background-color: var(--bg-sidebar) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 12px !important;
+        z-index: 10000 !important;
+        transition: right 0.3s ease-in-out !important;
+        padding: 15px !important;
+        box-sizing: border-box !important;
+        overflow-y: auto !important;
+    }
+
+    .sidebar.active {
+        right: 25px !important;
+    }
 }
 
-.open-sidebar-btn:hover {
-    background-color: #14462b;
+/* ==========================================
+   2. وضع الفون (768px أو أقل)
+   ========================================== */
+@media screen and (max-width: 768px) {
+    .overlay {
+        display: none !important;
+    }
+
+    .open-sidebar-btn {
+        position: absolute !important;
+        top: 15px !important;
+        right: 15px !important;
+        background-color: var(--btn-green) !important;
+        color: #ffffff !important;
+        border: 1px solid var(--primary-green) !important;
+        padding: 8px 16px !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
+        font-weight: bold !important;
+        z-index: 10005 !important;
+    }
+
+    .sidebar {
+        display: block !important;
+        position: absolute !important;
+        top: 60px !important;
+        right: 15px !important;
+        width: 240px !important;
+        max-width: calc(100vw - 30px) !important;
+        height: auto !important;
+        background-color: var(--bg-sidebar) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 12px !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+        z-index: 10000 !important;
+        padding: 15px 10px 10px 10px !important;
+
+        /* أنيميشن السلاسة للفون */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease !important;
+        pointer-events: none;
+    }
+
+    .sidebar.active {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+        pointer-events: auto !important;
+    }
+
+    .close-sidebar-btn {
+        display: block !important;
+        position: absolute !important;
+        top: 8px !important;
+        left: 12px !important;
+        background: none !important;
+        border: none !important;
+        color: var(--primary-green) !important;
+        font-size: 22px !important;
+        font-weight: bold !important;
+        cursor: pointer !important;
+    }
 }
 
-/* القائمة الجانبية - جهة اليمين */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: calc(-1 * var(--sidebar-width));
-    left: auto;
-    width: var(--sidebar-width);
-    height: 100vh;
-    background-color: var(--bg-sidebar);
-    color: #e4dada;
-    z-index: 1001;
-    padding: 25px 20px;
-    box-shadow: -2px 0 12px rgba(0, 0, 0, 0.5);
-    transition: var(--transition);
+/* ==========================================
+   3. الروابط
+   ========================================== */
+.sidebar-links li a {
+    color: var(--text-main) !important;
+    transition: var(--transition) !important;
+}
+
+.sidebar-links li a:hover {
+    color: var(--primary-green) !important;
+}
+
+
+/* ==========================================
+   تنسيق زرار القفل الـ X المظبوط
+   ========================================== */
+.close-sidebar-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;            /* في الزاوية شمال القائمة */
+    
+    width: 30px !important;
+    height: 30px !important;
+    
+    background-color: transparent !important; /* بدون أي خلفية رمادي مكسورة */
+    border: 1px solid var(--border-color, #323f4b) !important;
+    border-radius: 6px !important;
+    
+    color: var(--primary-green, #2ea043) !important; /* أو خليه أبيض حسب ذوقك */
+    font-size: 16px !important;
+    font-weight: bold !important;
+    line-height: 1 !important;
+    
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    padding: 0 !important;
+    z-index: 10010 !important;
+}
+
+/* حركة عند التمرير بالماوس عليه */
+.close-sidebar-btn:hover {
+    background-color: #dc2626 !important; /* يتحول لأحمر عند الـ Hover */
+    color: #ffffff !important;
+    border-color: #dc2626 !important;
+}
+/* ==========================================
+   تنسيق الروابط للطرفين
+   ========================================== */
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+}
+
+.sidebar-links li a {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 14px;
 }
 
-.sidebar.active {
-    right: 0;
-    left: auto;
+.sidebar-links li a:hover {
+    color: #00ff88;
+}
+
+
+/* ==========================================
+ تطبيق الوضع الليلي (Dark Mode)
+   ========================================== */
+body.dark-theme {
+    --bg-main: #050c08;
+    --bg-card: #0d1a14;
+    --bg-sidebar: #12161b;
+    --border-color: #1f2d24;
+    --text-main: #ffffff;
+    --text-sub: #9ca3af;
+}
+
+/* تعديل خلفية القائمة الجانبية ونصوصها في الوضع الليلي */
+body.dark-theme .sidebar {
+    background-color: var(--bg-sidebar);
+}
+
+body.dark-theme .sidebar-links a {
+    color: var(--text-sub);
+}
+
+body.dark-theme .sidebar-links a:hover {
+    background-color: #1c2128;
+    color: #ffffff;
+}
+
+@media (max-width: 600px) {
+
+    .main-container {
+        transition: transform 0.3s ease;
+    }
+
+    /* لما القائمة تفتح */
+    .main-container.sidebar-open {
+        transform: translateX(-90px);
+    }
+
+    /* تصغير بسيط للجزء العلوي فقط */
+    .main-container.sidebar-open .welcome-section {
+        transform: scale(0.88);
+        transform-origin: center top;
+        transition: transform 0.3s ease;
+    }
+
+    .main-container:not(.sidebar-open) .welcome-section {
+        transform: scale(1);
+        transition: transform 0.3s ease;
+    }
+}
+
+/* ==========================================
+   توحيد ألوان القائمة والزرار للوضع الليلي في جميع الصفحات
+   ========================================== */
+
+/* 1. إجبار القائمة على ألوان الوضع الليلي */
+.sidebar, 
+body.dark-theme .sidebar, 
+body.dark-mode .sidebar {
+    background-color: var(--bg-sidebar, #12161b) !important;
+    border-color: var(--border-color, #1f2d24) !important;
+    color: #ffffff !important;
+}
+
+/* 2. إجبار روابط القائمة على ألوان الوضع الليلي */
+.sidebar-links li a,
+body.dark-theme .sidebar-links li a,
+body.dark-mode .sidebar-links li a {
+    color: var(--text-sub, #e0e0e0) !important;
+}
+
+.sidebar-links li a:hover,
+body.dark-theme .sidebar-links li a:hover,
+body.dark-mode .sidebar-links li a:hover {
+    background-color: #1c2128 !important;
+    color: var(--primary-green, #2ea043) !important;
+}
+
+/* 3. إجبار زري الفتح والقفل على الألوان الصحيحة */
+.open-sidebar-btn {
+    background-color: var(--btn-green, #1b5e3a) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-green, #2ea043) !important;
 }
 
 .close-sidebar-btn {
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 1.8rem;
-    cursor: pointer;
-    align-self: flex-end;
-    line-height: 1;
-    margin-bottom: 10px;
+    color: var(--primary-green, #2ea043) !important;
+    border-color: var(--border-color, #1f2d24) !important;
 }
 
-.close-sidebar-btn:hover {
-    color: var(--primary-green);
-}
 
-.sidebar-header h3 {
-    color: var(--primary-green);
-    font-size: 1.3rem;
-    font-weight: 500;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-}
 
-.sidebar-links {
-    list-style: none;
-}
 
-.sidebar-links li {
-    margin-bottom: 8px;
-}
 
-.sidebar-links a {
-    color: var(--text-sub);
-    text-decoration: none;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    padding: 10px 12px;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-}
 
-.sidebar-links a:hover {
-    background-color: #2b323b;
-    color: #ffffff;
-}
 
-/* الطبقة الشفافة */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-}
 
-.overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
+
+
+
+
+
+
+
 
 /* تنسيق الواجهة */
 .main-container {
@@ -472,29 +649,46 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 /* ==========================================
-   تطبيق الوضع الليلي (Dark Mode)
+   تنسيق الثيم المتناسق (الوضع الليلي والنهاري)
    ========================================== */
+
+/* 1. الوضع النهاري الافتراضي (لما السويتش يكون مقفول) */
+body {
+    background-color: #f4f6f8 !important;
+    color: #1f2937 !important;
+    transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+
+body .settings-card,
+body .card,
+body .main-container {
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+/* 2. الوضع الليلي (لما السويتش يكون شغّال) */
 body.dark-theme {
-    --bg-main: #050c08;
-    --bg-card: #0d1a14;
-    --bg-sidebar: #12161b;
-    --border-color: #1f2d24;
-    --text-main: #ffffff;
-    --text-sub: #9ca3af;
+    background-color: #050c08 !important;
+    color: #ffffff !important;
 }
 
-/* تعديل خلفية القائمة الجانبية ونصوصها في الوضع الليلي */
+body.dark-theme .settings-card,
+body.dark-theme .card,
+body.dark-theme .main-container {
+    background-color: #0d1a14 !important;
+    color: #ffffff !important;
+    border: 1px solid #1f2d24 !important;
+}
+
+/* القائمة الجانبية بتتبع ثيم الـ body تلقائياً */
+.sidebar {
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+}
+
 body.dark-theme .sidebar {
-    background-color: var(--bg-sidebar);
-}
-
-body.dark-theme .sidebar-links a {
-    color: var(--text-sub);
-}
-
-body.dark-theme .sidebar-links a:hover {
-    background-color: #1c2128;
-    color: #ffffff;
+    background-color: #12161b !important;
+    color: #ffffff !important;
 }

@@ -19,38 +19,36 @@
     <div id="newIntro">
         <h1>مرحبًا</h1>
     </div>
+</button>
 
-    <!-- القائمة الجانبية (يمين) -->
-    <div id="sidebar" class="sidebar">
-        <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
+<!-- زر فتح القائمة -->
+<button class="open-sidebar-btn" onclick="toggleSidebar()">
+    ☰ <span data-ar="القائمة" data-en="Menu">القائمة</span>
+</button>
 
-        <div class="sidebar-header">
-            <h3 data-ar="قائمة التنقل" data-en="Navigation Menu">قائمة التنقل</h3>
-        </div>
-
-        <!-- روابط الصفحات والأقسام -->
-        <ul class="sidebar-links">
-            <li><a href="index.html" data-ar="🏠 الصفحة الرئيسية" data-en="🏠 Home">🏠 الصفحة الرئيسية</a></li>
-            <li><a href="index4.html" onclick="toggleSidebar()" data-ar="📿 أذكار الصلاة" data-en="📿 Prayer Azkar">📿
-                    أذكار الصلاة</a></li>
-            <li><a href="index2.html" onclick="toggleSidebar()" data-ar="✨ السبحة الإلكترونية"
-                    data-en="✨ Digital Tasbeeh">✨ السبحة الإلكترونية</a></li>
-            <li><a href="index3.html" data-ar="🕌 مواقيت الصلاة" data-en="🕌 Prayer Times">🕌 مواقيت الصلاة</a></li>
-            <li><a href="ramadan.html" data-ar="🌙 رمضان" data-en="🌙 Ramadan">🌙 رمضان</a></li>
-            <li><a href="index5.html" data-ar="قائمة الشيوخ" data-en="List of Sheikhs">قائمةالشيوخ</a></li>
-            <li><a href="settings.html" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات</a></li>
-
-        </ul>
+<!-- القائمة -->
+<div id="sidebar" class="sidebar">
+    <!-- زر الإغلاق (يظهر في الكمبيوتر فقط) -->
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
+    
+    <div class="sidebar-header">
+        <h3>قائمة التنقل</h3>
     </div>
 
+    <ul class="sidebar-links">
+        <li><a href="index.html" data-ar="🏠 الصفحة الرئيسية" data-en="🏠 Home"  >الصفحة الرئيسية 🏠</a></li>
+        <li><a href="index4.html"  data-ar="📿 أذكار الصلاة" data-en="📿 Prayer Azkar" >أذكار الصلاة 📿</a></li>
+        <li><a href="index2.html"  data-ar="✨ السبحة الإلكترونية" data-en="✨ Digital Tasbeeh" >السبحة الإلكترونية ✨</a></li>
+        <li><a href="index3.html"   data-ar="🕌 مواقيت الصلاة" data-en="🕌 Prayer Times">مواقيت الصلاة 🕌</a></li>
+        <li><a href="ramadan.html" onclick="toggleSidebar()" data-ar="🌙 رمضان" data-en="🌙 Ramadan">🌙 رمضان >رمضان 🌙</a></li>
+        <li><a href="index5.html"   data-ar="قائمة الشيوخ" data-en="List of Sheikhs">قائمةالشيوخ >قائمة الشيوخ 🕌</a></li>
+        <li><a href="settings.html" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات >الإعدادات ⚙️</a></li>
+    </ul>
+</div>
 
-    <!-- الطبقة الشفافة -->
-    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+<!-- الطبقة الشفافة خلف القائمة (للكمبيوتر) -->
+<div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
 
-    <!-- زر فتح القائمة (يمين) -->
-    <button class="open-sidebar-btn" onclick="toggleSidebar()">
-        ☰ <span data-ar="القائمة" data-en="Menu">القائمة</span>
-    </button>
 
     <!-- الواجهة الرئيسية -->
     <main class="main-container">
@@ -62,7 +60,7 @@
                     <h1 class="quran-title">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</h1>
                     <div class="home-icon"><i class="fas fa-home"></i></div>
                     <p class="welcome-msg" data-ar="مرحباً بك في" data-en="Welcome to">مرحباً بك في</p>
-                    <p class="app-name-main" data-ar="تطبيق المسلم" data-en="Muslim App">تطبيق المسلم</p>
+                    <p class="app-name-main" data-ar="تطبيق اثر" data-en="Muslim App">تطبيق اثر</p>
                     <p class="sub-msg" data-ar="رفيقك اليومي للذكر والصلاة والقرآن"
                         data-en="Your daily companion for dhikr, prayer, and Quran">رفيقك اليومي للذكر والصلاة والقرآن
                     </p>
@@ -139,14 +137,14 @@
                     <p data-ar="أوقات دقيقة للصلاة" data-en="Accurate prayer times">أوقات دقيقة للصلاة</p>
                 </a>
                 <a href="index4.html" class="explore-item">
-                    <i class="fas fa-beads"></i>
+                    <i class="fas fa-heart"></i>
                     <h4 data-ar="الأذكار" data-en="Dhikr">الأذكار</h4>
                     <p data-ar="أذكار الصباح والمساء" data-en="Morning and evening dhikr">أذكار الصباح والمساء</p>
                 </a>
                 <a href="ramadan.html" class="explore-item">
-                    <i class="fas fa-book-open"></i>
-                    <h4 data-ar="القرآن الكريم" data-en="Holy Quran">القرآن الكريم</h4>
-                    <p data-ar="القراءة والاستماع" data-en="Read and listen">القراءة والاستماع</p>
+                    <i class="fas fa-star-and-crescent"></i>
+                    <h4 data-ar="رمضان" data-en="Ramadan">رمضان</h4>
+                    <p data-ar="العد التنازلي لرمضان" data-en="Read and listen">القراءة والاستماع</p>
                 </a>
                 <a href="index5.html" class="explore-item">
                     <i class="fas fa-microphone"></i>

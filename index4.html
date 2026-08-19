@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css4.css">
+    <link rel="stylesheet" href="style.css">
     <!-- خطوط عربية أنيقة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,37 +17,35 @@
 </head>
 <body>
 
- <!-- زر فتح القائمة الجانبية -->
-    <button class="open-sidebar-btn" onclick="toggleSidebar()">☰ <span data-ar="القائمة" data-en="Menu">القائمة</span></button>
+<!-- زر فتح القائمة -->
+<button class="open-sidebar-btn" onclick="toggleSidebar()">
+    ☰ <span data-ar="القائمة" data-en="Menu">القائمة</span>
+</button>
 
-    <!-- القائمة الجانبية -->
-    <div id="sidebar" class="sidebar">
-        <!-- زر إغلاق القائمة -->
-        <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
-        
-        <div class="sidebar-header">
-            <h3 data-ar="قائمة التنقل" data-en="Navigation Menu">قائمة التنقل</h3>
-        </div>
-
-        <!-- روابط الصفحات والأقسام -->
-        <ul class="sidebar-links">
-            <li><a href="index.html" data-ar="🏠 الصفحة الرئيسية" data-en="🏠 Home">🏠 الصفحة الرئيسية</a></li>
-            <li><a href="index4.html" onclick="toggleSidebar()" data-ar="📿 أذكار الصلاة" data-en="📿 Prayer Azkar">📿 أذكار الصلاة</a></li>
-            <li><a href="index2.html" onclick="toggleSidebar()" data-ar="✨ السبحة الإلكترونية" data-en="✨ Digital Tasbeeh">✨ السبحة الإلكترونية</a></li>
-            <li><a href="index3.html" data-ar="🕌 مواقيت الصلاة" data-en="🕌 Prayer Times">🕌 مواقيت الصلاة</a></li>
-            <li><a href="ramadan.html" data-ar="🌙 رمضان" data-en="🌙 Ramadan">🌙 رمضان</a></li>
-            <li><a href="index5.html" data-ar="قائمة الشيوخ" data-en="List of Sheikhs">قائمةالشيوخ</a></li>
-            <li><a href="settings.html" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات</a></li>
-            
-        </ul>
-
-        
-        
-        
+<!-- القائمة -->
+<div id="sidebar" class="sidebar">
+    <!-- زر الإغلاق (يظهر في الكمبيوتر فقط) -->
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
+    
+    <div class="sidebar-header">
+        <h3>قائمة التنقل</h3>
     </div>
 
-    <!-- طبقة شفافة خلف القائمة عند الفتح لإغلاقها عند الضغط في أي مكان -->
-    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+    <ul class="sidebar-links">
+        <li><a href="index.html"   data-ar="🏠 الصفحة الرئيسية" data-en="🏠 Home">الصفحة الرئيسية 🏠</a></li>
+        <li><a href="index4.html" data-ar="📿 أذكار الصلاة" data-en="📿 Prayer Azkar" >أذكار الصلاة 📿</a></li>
+        <li><a href="index2.html" data-ar="✨ السبحة الإلكترونية" data-en="✨ Digital Tasbeeh" >السبحة الإلكترونية ✨</a></li>
+        <li><a href="index3.html" data-ar="🕌 مواقيت الصلاة" data-en="🕌 Prayer Times" >مواقيت الصلاة 🕌</a></li>
+        <li><a href="ramadan.html" onclick="toggleSidebar()" data-ar="🌙 رمضان" data-en="🌙 Ramadan">🌙 رمضان>رمضان 🌙</a></li>
+        <li><a href="index5.html"  data-ar="قائمة الشيوخ" data-en="List of Sheikhs">قائمةالشيوخ >قائمة الشيوخ 🕌</a></li>
+        <li><a href="settings.html"data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات >الإعدادات ⚙️</a></li>
+    </ul>
+</div>
+
+<!-- الطبقة الشفافة خلف القائمة (للكمبيوتر) -->
+<div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+
 
 <section class="countenr">
 
@@ -75,5 +74,6 @@
 <script src="lang.js"></script>
 <script src="quran-api.js"></script>
 <script src="script4.js"></script>
+<script src="scrypt.js"></script>
 </body>
 </html>

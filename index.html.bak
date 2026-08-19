@@ -1,49 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>القراء</title>
-    <link rel="stylesheet" href="home.css">
+    <title data-ar="القرآن الكريم والأذكار" data-en="Quran & Azkar">القرآن الكريم والأذكار</title>
     <link rel="stylesheet" href="style.css">
     <!-- خطوط عربية أنيقة -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;700&family=Lateef:wght@400;700&family=Noto+Naskh+Arabic:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lateef:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700&display=swap"
+        rel="stylesheet">
 </head>
 <body>
+    <!-- ================= شاشة الإنترو ================= -->
+    <div id="introScreen" class="intro-screen">
+        <div class="intro-content">
+            <h1 class="intro-title" data-ar="مرحباً" data-en="Welcome">مرحباً</h1>
+            <p class="intro-subtitle"></p>
+        </div>
+    </div>
+    <!-- ================= نهاية الإنترو ================= -->
 
-<!-- زر فتح القائمة -->
-<button class="open-sidebar-btn" onclick="toggleSidebar()">
-    ☰ <span data-ar="القائمة" data-en="Menu">القائمة</span>
-</button>
 
-<!-- القائمة -->
-<div id="sidebar" class="sidebar">
-    <!-- زر الإغلاق (يظهر في الكمبيوتر فقط) -->
-    <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
-    
-    <div class="sidebar-header">
-        <h3>قائمة التنقل</h3>
+    <!-- زر فتح القائمة الجانبية -->
+    <button class="open-sidebar-btn" onclick="toggleSidebar()">☰ <span data-ar="القائمة" data-en="Menu">القائمة</span></button>
+
+
+            <li><a href="#" onclick="navigateTo('settings'); toggleSidebar(); return false;" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات</a></li>
+        </ul>
     </div>
 
-    <ul class="sidebar-links">
-        <li><a href="index.html" data-ar="🏠 الصفحة الرئيسية" data-en="🏠 Home" >الصفحة الرئيسية 🏠</a></li>
-        <li><a href="index4.html" data-ar="📿 أذكار الصلاة" data-en="📿 Prayer Azkar" >أذكار الصلاة 📿</a></li>
-        <li><a href="index2.html" data-ar="✨ السبحة الإلكترونية" data-en="✨ Digital Tasbeeh" >السبحة الإلكترونية ✨</a></li>
-        <li><a href="index3.html" data-ar="🕌 مواقيت الصلاة" data-en="🕌 Prayer Times" >مواقيت الصلاة 🕌</a></li>
-        <li><a href="ramadan.html" onclick="toggleSidebar()" data-ar="🌙 رمضان" data-en="🌙 Ramadan">🌙 رمضان>رمضان 🌙</a></li>
-        <li><a href="index5.html"  data-ar="قائمة الشيوخ" data-en="List of Sheikhs">قائمةالشيوخ >قائمة الشيوخ 🕌</a></li>
-        <li><a href="settings.html" data-ar="⚙️ الإعدادات" data-en="⚙️ Settings">⚙️ الإعدادات>الإعدادات ⚙️</a></li>
-    </ul>
-</div>
+    <!-- طبقة شفافة خلف القائمة عند الفتح لإغلاقها عند الضغط في أي مكان -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
 
-<!-- الطبقة الشفافة خلف القائمة (للكمبيوتر) -->
-<div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+    <div class="hero">
+        <h1 data-ar="القرآن الكريم 📖" data-en="The Holy Quran 📖">
+            القرآن الكريم📖
+        </h1>
 
-
-
+        <!-- زر تغيير الوضع -->
+       
     </div>
     <!-- البوكس الرئيسي الكبير للشيخ -->
     <div class="main-featured-box">
@@ -470,7 +466,7 @@
 
         <!-- صورة الشيخ -->
         <div class="reciter-image-container">
-            <img src="alsdus.jpg" alt="صورة الشيخ" class="reciter-img">
+            <img src="السديس ❤️.jpg" alt="صورة الشيخ" class="reciter-img">
         </div>
 
         <!-- تفاصيل الشيخ والتحكم -->
@@ -598,18 +594,22 @@
                     <option value="114">114 - سورة الناس</option>
                 </select>
 
-                <button class="main-play-btn">▶ تشغيل السورة</button>
+<button class="main-play-btn">▶ تشغيل السورة</button>
                 <button class="stop-btn" data-ar="⏹ إيقاف" data-en="⏹ Stop">⏹ إيقاف</button>
             </div>
         </div>
 
     </div>
 
+
+
+
+
     <div class="main-featured-box">
 
         <!-- صورة الشيخ -->
         <div class="reciter-image-container">
-            <img src="Sheikh Yasser Al Dosari .webp" alt="صورة الشيخ" class="reciter-img">
+            <img src="Sheikh Yasser Al Dosari 🤍.webp" alt="صورة الشيخ" class="reciter-img">
         </div>
 
         <!-- تفاصيل الشيخ والتحكم -->
@@ -747,10 +747,7 @@
     <!-- شريط حالة المشغل -->
 <div id="playerStatus" class="player-status" data-ar="🎵 المشغل متوقف" data-en="🎵 Player Stopped">🎵 المشغل متوقف</div>
 
-<script src="lang.js"></script>
-<script src="quran-api.js"></script>
-<script src="script3.js"></script>
-<script src="scrypt.js"></script>
-
+    <script src="lang.js"></script>
+    <script src="quran-api.js"></script>
+    <script src="script3.js"></script>
 </body>
-</html>
